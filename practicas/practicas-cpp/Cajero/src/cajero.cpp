@@ -244,7 +244,7 @@ std::string validarDigitos(const std::string& mensaje,int n){
             continue;
         }
         
-        if (numeroStr.length() == n) {
+        if(numeroStr.length()==static_cast<std::string::size_type>(n)){
             return numeroStr;
         } else {
             printf("El número debe tener exactamente %d dígitos. Intente de nuevo.\n", n);
@@ -264,7 +264,7 @@ std::string validarDigitos(const std::string& mensaje,int n,void (*menu_ptr)(con
             continue;
         }
         
-        if (numeroStr.length()==n) return numeroStr;
+        if(numeroStr.length()==static_cast<std::string::size_type>(n)) return numeroStr;
         else {
             printf("El número debe tener exactamente %d dígitos. Intente de nuevo.\n", n);
             menu_ptr(mensaje);
