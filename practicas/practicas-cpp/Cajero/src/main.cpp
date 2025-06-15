@@ -11,7 +11,7 @@ Descripción:    Este proyecto simula un sistema básico de cajero automático
 				Interactúa con un archivo 'cuentas.txt' para gestionar la 
 				información de las cuentas y genera archivos de registro de 
 				transacciones y actividades de sesión.
-Versión:        v2.1.0
+Versión:        v2.3.0
 *******************************************************************************/
 #include <cstdio>
 #include <limits>
@@ -79,6 +79,7 @@ void menuPrincipal(const std::string &opcion){
 }
 
 void menuUsuario(Cajero& c){
+	limpiarPantalla();
 	int opc;	
 	do{
 			std::cout<<std::endl;
@@ -88,14 +89,16 @@ void menuUsuario(Cajero& c){
             opc=validarNumero(opcion,menu);
 
 			switch(opc){
-				case 1:{					
+				case 1:{//Iniciar sesion
+					limpiarPantalla();
 					std::string cuentaIngresada;
 					std::string mensaje="Ingrese el numero de cuenta: ";
 					cuentaIngresada=validarDigitos(mensaje,c.getDigCuenta(),menu);
 					c.IniciarSesion(cuentaIngresada);
 					break;
 				}
-				case 2:{
+				case 2:{//Crear cuenta
+					limpiarPantalla();
 					std::string nuevaCuenta=generarNumero(c.getDigCuenta(),1);
 					std::string nuevoPin=generarNumero(c.getDigPin(),0);
 					std::string nuevoNombre;
@@ -110,11 +113,15 @@ void menuUsuario(Cajero& c){
 					break;
 				}	
                 case 0:
+					limpiarPantalla();
                     printf("Hasta luego!\n");
+					pausar();
                     exit(0);
                     break;
                 default:
+					limpiarPantalla();
                     std::cout << "Opcion no valida. Intente de nuevo.\n";
+					pausar();
                     break;
 			}
 		}while(opc!=0);	
@@ -132,7 +139,8 @@ void menuAdministrador(const std::string &opcion){
     printf("0. Salir.\n");    
 }
 
-void menuAdministrador(Cajero& c){	
+void menuAdministrador(Cajero& c){
+	limpiarPantalla();
 	int opc;
 	do{
 		std::cout<<std::endl;
@@ -142,21 +150,25 @@ void menuAdministrador(Cajero& c){
 		opc=validarNumero(opcion);
 		switch(opc){
 			case 1:{//1. Ingresar como administrador
-				printf("EN CONSTRUCCION\n");
-				std::cout<<std::endl; break;
+				limpiarPantalla();
+				printf("EN CONSTRUCCION\n");				
+				pausar();break;
 			}
 			case 2: {//2. Depuración
+				limpiarPantalla();
 				printf("Depuración\n");
 				long long int cuenta=1111111111;
 				depurarMain(c,cuenta);
 				std::cout<<std::endl; break;
 			}
 			case 3: {//3. Ver usuarios registrados
+				limpiarPantalla();
 				printf("Usuarios registrados: %d\n",cuentas());
 				mostrarCuentas(CuentasRegistradas(),cuentas());
-				std::cout<<std::endl; break;
+				pausar(); break;
 			}
 			case 4: {//4. Genrar archivos logs de todos los usuarios
+				limpiarPantalla();
 				int n=cuentas();
 				printf("Se van a generar %d archivos logs\n",n);
 				printf("Desea continuar?\n");
@@ -171,11 +183,17 @@ void menuAdministrador(Cajero& c){
 				std::cout<<std::endl; break;
 			}
 			case 0://0. Salir
+				limpiarPantalla();
 				printf("Hasta luego!");
+				pausar();
 				exit(0);
 				std::cout<<std::endl; break;
 
-			default:std::cout<<"Opcion no valida. Intente de nuevo.\n";
+			default:
+				limpiarPantalla();
+				std::cout<<"Opcion no valida. Intente de nuevo.\n";
+				pausar();
+				break;
 		}
 	}while(opc!=0);
 }
@@ -192,7 +210,9 @@ void depurarMain(Cajero& c,long long int cuenta){
 		
 		transacciones(c);
 	}else{
+		limpiarPantalla();
 		printf("La cuenta %s no existe.\n",cuentaIngresada.c_str());	
+		pausar();
 		exit(0);
 	}
 }
@@ -276,12 +296,15 @@ void mostrarCuentas(long* cuentas, int n){
 }
 
 void crearArchivosLog(){
+	limpiarPantalla();
 	int n=cuentas();
 	long* cuentas=CuentasRegistradas();
 	for(int i=0;i<n;i++){
 		std::string mensaje="Se ha creado el log de la cuenta: "+std::to_string(i+1)+" "+std::to_string(cuentas[i]);
 		CrearLogs(std::to_string(cuentas[i]),mensaje);
 	}
+	printf("Los logs de todas las cuentas han sido creados\n");
+	pausar();
 }
 
 //-----------------------------------------------------------------------------

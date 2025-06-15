@@ -86,6 +86,7 @@ bool Cajero::cuentaExiste(const std::string& cuenta){
 }
 
 void Cajero::IniciarSesion(const std::string& cuentaIngresada){
+    limpiarPantalla();
     
     if (!cuentaExiste(cuentaIngresada)) {
         printf("Número de cuenta no encontrada.\n");
@@ -128,6 +129,7 @@ void Cajero::IniciarSesion(const std::string& cuentaIngresada){
 }
 
 void Cajero::IngresarPin(const std::string& cuenta){
+    limpiarPantalla();
     int intentos=0;
     int maxIntentos=3;
     int digitos=4;
@@ -143,7 +145,7 @@ void Cajero::IngresarPin(const std::string& cuenta){
         std::string mensaje=oss.str();
         printf("Porfavor ingrese su PIN.\n");
         pinIngresado = validarDigitos(mensaje,digitos); 
-
+        limpiarPantalla();
         if(pinIngresado==pin){
             std::cout<<"Inicio de sesión exitoso.\n";
             //logSesionIniciada(cuenta);
@@ -159,15 +161,18 @@ void Cajero::IngresarPin(const std::string& cuenta){
 }
 
 void Cajero::IngresarDinero(const std::string& cuenta,float cantidad){
+    limpiarPantalla();
     if(cantidad<0){
         printf("La cantidad a ingresar debe ser mayor a 0.\n");
         return;        
     }
     
     if(cantidad>montoMaximo){
+        limpiarPantalla();
         printf("Transacción denegada.\n");
         printf("La cantidad a ingresar es mayor a €%'d.\n",montoMaximo);
         logIngresoFallido(cuenta,cantidad);
+        pausar();
         return;
     }
     
@@ -203,19 +208,24 @@ void Cajero::IngresarDinero(const std::string& cuenta,float cantidad){
     printf("Ingreso exitoso. Saldo actual: €%.2f\n",getSaldo());
     logGenerarMoivimentos(cantidad);
     logGenerarMoivimentos(getSaldo());
+    pausar();
 }
 
 void Cajero::RetirarDinero(const std::string& cuenta,float cantidad){
     if(cantidad<0){
+        limpiarPantalla();
         printf("La cantidad a retirar debe ser mayor a €0.\n");
         logRetiroFallido(cuenta,cantidad);
+        pausar();
         return;        
     }
     if(cantidad>saldo){
+        limpiarPantalla();
         printf("Transacción denegada.\n");
         printf("La cantidad a retirar es mayor al saldo disponible.\n");
         printf("Saldo disponible: €%.2f\n",saldo);
         logRetiroFallido(cuenta,cantidad);
+        pausar();
         return;
     }
     saldo-=cantidad;
@@ -246,7 +256,9 @@ void Cajero::RetirarDinero(const std::string& cuenta,float cantidad){
     }
     archivoEscritura.close();
 
+    limpiarPantalla();
     printf("Retiro exitoso. Saldo actual: €%.2f\n",getSaldo());
+    pausar();
 }
 
 void Cajero::CambiarPin(const std::string& cuentaIngresada, const std::string& pinAntiguoIngresado) {    
@@ -297,23 +309,35 @@ void Cajero::CambiarPin(const std::string& cuentaIngresada, const std::string& p
     }
     
     if (pinAntiguoIngresado != pinReal) {
+        limpiarPantalla();
         printf("El PIN actual ingresado es incorrecto.\n");
         logCambioPinFallido(cuentaIngresada);
+        pausar();
         return;
     }
     
     std::string nuevoPin1;
     std::string nuevoPin2;
 
+    limpiarPantalla();
     printf("Por favor, ingrese su nuevo PIN (de %d dígitos): \n",getDigPin());
     nuevoPin1 = validarDigitos("Nuevo PIN: ",getDigPin());
-//PUTA CAGADA (Confiirma que no es el mismo pin)
+    if(nuevoPin1==pinAntiguoIngresado){
+        limpiarPantalla();
+        printf("El nuevo PIN no puede ser el mismo que el antiguo.\n");
+        logCambioPinFallido(cuentaIngresada);
+        pausar();
+        return;
+    }
+    limpiarPantalla();
     printf("Por favor, confirme su nuevo PIN: \n");
     nuevoPin2 = validarDigitos("Confirmar nuevo PIN: ",getDigPin());
     
     if (nuevoPin1 != nuevoPin2) {
+        limpiarPantalla();
         printf("Los nuevos PINs no coinciden. La operación ha sido cancelada.\n");
         logCambioPinFallido(cuentaIngresada);
+        pausar();
         return;
     }
     
@@ -337,8 +361,10 @@ void Cajero::CambiarPin(const std::string& cuentaIngresada, const std::string& p
                         << std::fixed << std::setprecision(2) << saldoReal;
             outputFile << updatedLine.str() << "\n";
             updated = true;
+            limpiarPantalla();
             printf("PIN cambiado exitosamente para la cuenta %s.\n", cuentaReal.c_str());            
-            logCambioPinExitoso(cuentaReal);            
+            logCambioPinExitoso(cuentaReal);
+            pausar();
         } else {            
             outputFile << l << "\n";
         }
@@ -353,12 +379,16 @@ void Cajero::CambiarPin(const std::string& cuentaIngresada, const std::string& p
 
 void Cajero::CrearCuenta(const std::string& cuenta, const std::string& nombre, const std::string& pin, float saldoInicial){
     if(cuentaExiste(cuenta)){
+        limpiarPantalla();
         std::cout<<"La cuenta ya existe."<<std::endl;
-        return;
+        pausar();
+        return;        
     }
 
     if(saldoInicial<0){
+        limpiarPantalla();
         std::cout<<"El saldo inicial no puede ser negativo."<<std::endl;
+        pausar();
         return;
     }
 
@@ -384,9 +414,11 @@ void Cajero::CrearCuenta(const std::string& cuenta, const std::string& nombre, c
     this->saldo=saldoInicial;
 
     logCuentaCreada(cuenta);
+    limpiarPantalla();
     std::cout<<"Cuenta creada exitosamente."<<std::endl;
     printf("Su numero de cuenta es: %s\n",cuenta.c_str()); 
     printf("Su PIN asignado es: %s\n.Porfavor cambielo de inmediato!!!.\n",pin.c_str());
+    pausar();
 
     IngresarPin(cuenta);
 }
@@ -412,8 +444,8 @@ void limpiarPantalla() {
 }
 
 void pausar() {
-    std::cout << "\nPresiona Enter para continuar...";
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el buffer
+    std::cout << "\nPresiona Enter para continuar...\n";
+    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el buffer
     std::cin.get();
 }
 
@@ -646,13 +678,15 @@ int validarNumero(const std::string &opcion,void (*menu_ptr)(const std::string &
 }
 
 std::string validarDigitos(const std::string& mensaje,int n){
+    limpiarPantalla();
     std::string numeroStr;
     while(true){
         printf("%s", mensaje.c_str());
         std::getline(std::cin, numeroStr);
 
         if (!esSoloDigitos(numeroStr)) {
-            printf("La entrada debe contener solo dígitos numéricos. Intente de nuevo.\n");
+            printf("La entrada debe contener solo %d dígitos. Intente de nuevo.\n",n);
+            pausar();
             continue;
         }
         
@@ -660,19 +694,22 @@ std::string validarDigitos(const std::string& mensaje,int n){
             return numeroStr;
         } else {
             printf("El número debe tener exactamente %d dígitos. Intente de nuevo.\n", n);
+            pausar();
         }
     }
 }
 
-std::string validarDigitos(const std::string& mensaje,int n,void (*menu_ptr)(const std::string &opcion)){ // Renombre
+std::string validarDigitos(const std::string& mensaje,int n,void (*menu_ptr)(const std::string &opcion)){
+    limpiarPantalla();
     std::string numeroStr;
     while(true){
         printf("%s", mensaje.c_str());
         std::getline(std::cin, numeroStr);
 
         if (!esSoloDigitos(numeroStr)) {
-            printf("La entrada debe contener solo dígitos numéricos. Intente de nuevo.\n");
+            printf("La entrada debe contener solo %d dígitos. Intente de nuevo.\n",n);
             menu_ptr(mensaje);
+            pausar();
             continue;
         }
         
@@ -680,11 +717,13 @@ std::string validarDigitos(const std::string& mensaje,int n,void (*menu_ptr)(con
         else {
             printf("El número debe tener exactamente %d dígitos. Intente de nuevo.\n", n);
             menu_ptr(mensaje);
+            pausar();
         }
     }
 }
 
 void transacciones(Cajero& cajero){
+    limpiarPantalla();
     cajero.logSesionIniciada(cajero.getNumeroCuenta());
     int opc; 
     do{
@@ -692,11 +731,15 @@ void transacciones(Cajero& cajero){
 		menu(opcion,cajero);
         opc=validarNumero(opcion, menu);
         switch(opc){
-            case 1:
+            case 1://1. Consultar saldo
+                limpiarPantalla();
                 printf("Saldo actual: %.2f\n",cajero.getSaldo());
                 cajero.logConsultaSaldo(cajero.getNumeroCuenta());
+                printf("\n");
+                pausar();
                 break;
-            case 2: {
+            case 2: {//2. Ingresar dinero
+                limpiarPantalla();
                 setlocale(LC_NUMERIC, "");
                 int monto=cajero.montoMaximo;
                 printf("NOTA!: No puede ingresar más de €%'d a la vez.\n",monto);
@@ -705,13 +748,13 @@ void transacciones(Cajero& cajero){
                 cajero.IngresarDinero(cajero.getNumeroCuenta(),cantidadIngresada);
                 break;
             }
-            case 3: {
+            case 3: {//3. Retirar dinero
                 printf("Ingrese la cantidad de dinero a retirar: ");
                 float cantidadRetirada=validarNumero("",menu);
                 cajero.RetirarDinero(cajero.getNumeroCuenta(),cantidadRetirada);
                 break;
             }
-            case 4: {
+            case 4: {//4. Cambiar PIN
                 printf("Ingrese el PIN actual: ");
                 std::string pinActual=validarDigitos("",cajero.getPin().length(),menu);
                 if(pinActual!=cajero.getPin()){
@@ -724,17 +767,24 @@ void transacciones(Cajero& cajero){
                 break;
             }
             case 0:{
+                limpiarPantalla();
                 cajero.logSesionFinalizada(cajero.getNumeroCuenta());
                 printf("Hasta luego!");
+                pausar();
                 exit(0);
                 break;
             }                
-            default:std::cout<<"Opcion no valida. Intente de nuevo.\n";
+            default:
+                limpiarPantalla();
+                std::cout<<"Opcion no valida. Intente de nuevo.\n";
+                pausar();
+                break;
         }
     }while(opc!=0);
 }
 
-void menu(const std::string &opcion,Cajero& cajero){	
+void menu(const std::string &opcion,Cajero& cajero){
+    limpiarPantalla();
 	printf("Bienvenido a su cuenta, %s\n",cajero.getNombre().c_str());
     printf("\nMenu de transacciones:\n");
     printf("1. Consultar saldo\n");

@@ -1,2 +1,85 @@
 Dueño de la cuenta: Juan Pérez
-------Cuenta creada en 20250615144524
+------Cuenta creada en 2025061514452420250615152859-> Sesion iniciada exitosamente
+20250615152859|	€10.00
+20250615153004-> Conulta de saldo realizada
+20250615153011-> Sesion finalizada
+-
+20250615153104-> Sesion iniciada exitosamente
+20250615153104|	€10.00
+20250615153114-> Conulta de saldo realizada
+20250615153138-> Sesion finalizada
+-
+20250615153415-> Sesion iniciada exitosamente
+20250615153415|	€10.00
+20250615153427-> Cambio de PIN fallido
+20250615153440-> Sesion finalizada
+-
+20250615153537-> Sesion iniciada exitosamente
+20250615153537|	€10.00
+20250615153543-> Conulta de saldo realizada
+20250615153607-> Sesion finalizada
+-
+20250615153652-> Sesion iniciada exitosamente
+20250615153652|	€10.00
+20250615153653-> Conulta de saldo realizada
+20250615153712-> Sesion finalizada
+-
+20250615153835-> Sesion iniciada exitosamente
+20250615153835|	€10.00
+20250615153844-> Conulta de saldo realizada
+20250615153852|	€10.00
+20250615153852|	€20.00
+20250615153934-> Sesion iniciada exitosamente
+20250615153934|	€20.00
+20250615153938-> Conulta de saldo realizada
+20250615153953|	€20.00
+20250615153953|	€40.00
+20250615154007-> Sesion finalizada
+-
+20250615154059-> Sesion iniciada exitosamente
+20250615154059|	€40.00
+20250615154104-> Conulta de saldo realizada
+20250615154143-> Sesion finalizada
+-
+20250615154202-> Sesion iniciada exitosamente
+20250615154202|	€40.00
+20250615154205-> Conulta de saldo realizada
+20250615154214|	€10.00
+20250615154214|	€50.00
+20250615154239-> Transaccion denegada.
+Ingreso fallido de €100000.00
+20250615154248-> Sesion finalizada
+-
+20250615154329-> Sesion iniciada exitosamente
+20250615154329|	€50.00
+20250615154336-> Transaccion denegada.
+Ingreso fallido de €200000.00
+20250615154435-> Sesion finalizada
+-
+20250615154621-> Sesion iniciada exitosamente
+20250615154621|	€50.00
+20250615154626|	€-30.00
+20250615154626|	€20.00
+20250615154631-> Conulta de saldo realizada
+20250615154635-> Transaccion denegada.
+Retiro fallido de €30.00
+20250615154650-> Sesion finalizada
+-
+20250615155208-> Sesion iniciada exitosamente
+20250615155208|	€20.00
+20250615155220|	€-10.00
+20250615155220|	€10.00
+20250615155232-> Cambio de PIN exitoso
+20250615155240-> Sesion iniciada exitosamente
+20250615155240|	€10.00
+20250615155300-> Cambio de PIN exitoso
+20250615155304-> Sesion iniciada exitosamente
+20250615155304|	€10.00
+20250615155316-> Sesion finalizada
+-
+20250615155435-> Sesion iniciada exitosamente
+20250615155435|	€10.00
+20250615155509|	€10.00
+20250615155509|	€20.00
+20250615155546-> Sesion finalizada
+-
