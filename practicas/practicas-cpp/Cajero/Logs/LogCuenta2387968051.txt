@@ -1,0 +1,13 @@
+Dueño de la cuenta: John Smith
+------Cuenta creada en 2025061514460520250615144720-> Sesion iniciada exitosamente
+20250615144720|	€3000.00
+20250615144758-> Cambio de PIN exitoso
+20250615144807-> Sesion iniciada exitosamente
+20250615144807|	€3000.00
+20250615144815-> Conulta de saldo realizada
+20250615144828|	€-20.00
+20250615144828|	€2980.00
+20250615144842|	€40.00
+20250615144842|	€3020.00
+20250615144847-> Sesion finalizada
+-

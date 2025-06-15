@@ -3,33 +3,46 @@ Proyecto:       Sistema de Cajero Automático
 Autor:          Ektor Ormaetxea V
 Archivos:       main.cpp, cajero.h, cajero.cpp, cuentas.txt
 Lenguaje:       C++
-Compilador:     g++ (o el que estés usando)
+Compilador:     g++
+IDE:            Visual Studio Code
 Descripción:    Este proyecto simula un sistema básico de cajero automático 
 				que permite a los usuarios iniciar sesión, consultar su saldo, 
 				depositar, retirar dinero, cambiar su PIN y crear nuevas cuentas. 
 				Interactúa con un archivo 'cuentas.txt' para gestionar la 
 				información de las cuentas y genera archivos de registro de 
 				transacciones y actividades de sesión.
-Versión:        v1.0.0
+Versión:        v2.1.0
 *******************************************************************************/
 #include <cstdio>
 #include <limits>
 #include <string> 
 #include <random>
 #include <chrono>
+//--------------------------------------------------------------------
+#include <fstream>  
+#include <sstream>
+int cuentas();
+long* CuentasRegistradas();
+void CrearLogs(std::string cuenta,std::string mensaje);
+void mostrarCuentas(long* cuentas, int n);
+void crearArchivosLog();
+//--------------------------------------------------------------------
 
 #include <iostream>
 #include "cajero.h"
 
-std::string generarNumero(int n);
+std::string generarNumero(int n, int primerNum);
 void menu(const std::string &opcion);
 void menuUsuario(Cajero& c);
-void menuAdministrador(Cajero& c);
 void menuPrincipal(const std::string &opcion);
+
+void menuAdministrador(Cajero& c);
+void menuAdministrador(const std::string &opcion);
+void depurarMain(Cajero& c,long long int cuenta);
 
 int main(){
     Cajero c;
-    int opc;
+    int opc;	
    do{
 	std::string opcion="> ";
 	menuPrincipal(opcion);
@@ -46,6 +59,9 @@ int main(){
     return 0;
 }
 
+
+//-------------Menús-----------------------------------------------------------
+//-------------Menu Usuarios---------------------------------------------------
 void menu(const std::string &opcion){
 	std::cout<<std::endl;
     printf("Seleccione una opción\n");
@@ -62,19 +78,6 @@ void menuPrincipal(const std::string &opcion){
     printf("0. Salir.\n");    
 }
 
-std::string generarNumero(int n){
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(0, 9);
-
-    std::string num_str;
-
-    for(int i=0; i<n; ++i){
-        num_str += std::to_string(distrib(gen));
-    }
-    return num_str;
-}
-
 void menuUsuario(Cajero& c){
 	int opc;	
 	do{
@@ -85,7 +88,7 @@ void menuUsuario(Cajero& c){
             opc=validarNumero(opcion,menu);
 
 			switch(opc){
-				case 1:{
+				case 1:{					
 					std::string cuentaIngresada;
 					std::string mensaje="Ingrese el numero de cuenta: ";
 					cuentaIngresada=validarDigitos(mensaje,c.getDigCuenta(),menu);
@@ -93,16 +96,16 @@ void menuUsuario(Cajero& c){
 					break;
 				}
 				case 2:{
-					std::string nuevaCuenta=generarNumero(c.getDigCuenta());
-					std::string nuevoPin=generarNumero(c.getDigPin());
+					std::string nuevaCuenta=generarNumero(c.getDigCuenta(),1);
+					std::string nuevoPin=generarNumero(c.getDigPin(),0);
 					std::string nuevoNombre;
 					float saldoInicial;
 					std::cout<<"Ingrese su nombre y apellido: ";
 					//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	                std::getline(std::cin, nuevoNombre);
 					std::cout<<"Ingrese el saldo inicial: ";
-					std::cin>>saldoInicial; 
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					saldoInicial=validarSaldo(); 
+                    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					c.CrearCuenta(nuevaCuenta,nuevoNombre,nuevoPin,saldoInicial);
 					break;
 				}	
@@ -116,6 +119,169 @@ void menuUsuario(Cajero& c){
 			}
 		}while(opc!=0);	
 }
-void menuAdministrador(Cajero& c){
-	std::cout<<"\n\n	EN CONSTRUCCION\n\n";
+
+//-------------Menu Administrador----------------------------------------------
+
+void menuAdministrador(const std::string &opcion){
+	std::cout<<std::endl;
+    printf("Seleccione una opción\n");
+    printf("1. Ingresar como administrador.\n");
+	printf("2. Depuración.\n");
+	printf("3. Ver usuarios registrados.\n");
+	printf("4. Genrar archivos logs de todos los usuarios.\n");
+    printf("0. Salir.\n");    
 }
+
+void menuAdministrador(Cajero& c){	
+	int opc;
+	do{
+		std::cout<<std::endl;
+		std::string opcion="> ";
+		std::cout<<"Menu administrador"<<std::endl;
+		menuAdministrador(opcion);
+		opc=validarNumero(opcion);
+		switch(opc){
+			case 1:{//1. Ingresar como administrador
+				printf("EN CONSTRUCCION\n");
+				std::cout<<std::endl; break;
+			}
+			case 2: {//2. Depuración
+				printf("Depuración\n");
+				long long int cuenta=1111111111;
+				depurarMain(c,cuenta);
+				std::cout<<std::endl; break;
+			}
+			case 3: {//3. Ver usuarios registrados
+				printf("Usuarios registrados: %d\n",cuentas());
+				mostrarCuentas(CuentasRegistradas(),cuentas());
+				std::cout<<std::endl; break;
+			}
+			case 4: {//4. Genrar archivos logs de todos los usuarios
+				int n=cuentas();
+				printf("Se van a generar %d archivos logs\n",n);
+				printf("Desea continuar?\n");
+				printf("1. Si\n");
+				printf("2. No\n");
+				int opc2=validarNumero(">");
+				switch(opc2){
+					case 1:crearArchivosLog();break;
+					case 2:break;
+					default:std::cout<<"Opcion no valida. Intente de nuevo.\n";
+				}
+				std::cout<<std::endl; break;
+			}
+			case 0://0. Salir
+				printf("Hasta luego!");
+				exit(0);
+				std::cout<<std::endl; break;
+
+			default:std::cout<<"Opcion no valida. Intente de nuevo.\n";
+		}
+	}while(opc!=0);
+}
+//-----------------------------------------------------------------------------
+
+//-------------Funciones-------------------------------------------------------
+void depurarMain(Cajero& c,long long int cuenta){	
+	std::string cuentaIngresada=std::to_string(cuenta);
+	if(c.getCuenta(cuentaIngresada)){
+		std::string cuenta=c.getNumeroCuenta();
+		std::string nombre=c.getNombre();
+		std::string pin=c.getPin();
+		float saldo=c.getSaldo();
+		
+		transacciones(c);
+	}else{
+		printf("La cuenta %s no existe.\n",cuentaIngresada.c_str());	
+		exit(0);
+	}
+}
+
+std::string generarNumero(int n, int primerNum){ // Agregamos el segundo parámetro
+    std::random_device rd; 
+    std::mt19937 gen(rd()); 
+    
+    std::string num_str;
+
+    // Lógica para el primer dígito
+    if (n > 0) { // Asegurarse de que n sea positivo
+        if (primerNum == 0) { // Si primerNum es 0, permite que el primer dígito sea 0
+            std::uniform_int_distribution<> distrib_first(0, 9);
+            num_str += std::to_string(distrib_first(gen));
+        } else { // Si primerNum es diferente de 0 (ej. 1), evita que el primer dígito sea 0
+            std::uniform_int_distribution<> distrib_first(1, 9);
+            num_str += std::to_string(distrib_first(gen));
+        }
+    }
+
+    // Lógica para los dígitos restantes
+    std::uniform_int_distribution<> distrib_rest(0, 9);
+    for(int i = 1; i < n; ++i){ // Empieza desde el segundo dígito (índice 1)
+        num_str += std::to_string(distrib_rest(gen));
+    }
+    return num_str;
+}
+//-----------------------------------------------------------------------------
+
+//-------------Funciones para generar archivos logs----------------------------
+int cuentas(){
+    std::ifstream archivo("../cuentas.txt");
+    int conteo = 0;
+    std::string linea;
+    while (getline(archivo, linea)) {
+        conteo++;
+    }
+    archivo.close();
+    return conteo;
+}
+
+long* CuentasRegistradas(){
+    int n=cuentas();
+    long* cuentas = new long[n];
+    std::ifstream archivo("../cuentas.txt");
+    int i=0;
+    std::string linea;    
+    while (getline(archivo, linea)) {
+        std::istringstream ss(linea);
+        std::string campo;
+        getline(ss, campo, '|');
+        cuentas[i++] = std::stol(campo);               
+    }
+    archivo.close();
+    return cuentas;
+}
+
+void CrearLogs(std::string cuenta,std::string mensaje){
+    Cajero c;
+	std::cout<<mensaje<<std::endl;
+    std::string nombreArchivo=cuenta;	 
+    if(!c.existeArchivoLog(cuenta)){
+		c.crearArchivoLog(cuenta);
+	}
+	c.logCuentaCreada(cuenta);
+}
+
+void mostrarCuentas(long* cuentas, int n){
+	Cajero c;
+	for(int i=0;i<n;i++){
+		if(c.cuentaExiste(std::to_string(cuentas[i]))){
+			if(c.getCuenta(std::to_string(cuentas[i]))){
+				printf("El dueño de la cuenta %s es: %s\n",std::to_string(cuentas[i]).c_str(),c.getNombre().c_str());
+				printf("El PIN de la cuenta %s es: %s\n", std::to_string(cuentas[i]).c_str(), c.getPin().c_str());
+				printf("El saldo de la cuenta %s es: %.2f\n",std::to_string(cuentas[i]).c_str(),c.getSaldo());
+			}			
+		}
+	}
+	
+}
+
+void crearArchivosLog(){
+	int n=cuentas();
+	long* cuentas=CuentasRegistradas();
+	for(int i=0;i<n;i++){
+		std::string mensaje="Se ha creado el log de la cuenta: "+std::to_string(i+1)+" "+std::to_string(cuentas[i]);
+		CrearLogs(std::to_string(cuentas[i]),mensaje);
+	}
+}
+
+//-----------------------------------------------------------------------------
