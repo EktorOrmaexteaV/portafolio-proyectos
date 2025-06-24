@@ -3,7 +3,7 @@ Proyecto:       Sistema de Cajero Automático
 Autor:          Ektor Ormaetxea V
 Archivos:       main.cpp, cajero.h, cajero.cpp, cuentas.txt
 Lenguaje:       C++
-Compilador:     g++
+Compilador:     g++-13
 IDE:            Visual Studio Code
 Descripción:    Este proyecto simula un sistema básico de cajero automático 
 				que permite a los usuarios iniciar sesión, consultar su saldo, 
