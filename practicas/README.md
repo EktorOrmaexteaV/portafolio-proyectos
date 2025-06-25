@@ -13,6 +13,7 @@ Aquí encontrarás una variedad de prácticas, organizadas por lenguaje de progr
 ## 📂 Estructura de Proyectos
 
 La estructura de este repositorio se organiza primero por el lenguaje de programación, y luego por proyectos individuales dentro de esas carpetas.
+```
 portafolio-proyectos
 └── practicas/    
 │   ├── practicas-cpp/
@@ -23,6 +24,7 @@ portafolio-proyectos
 │   │   └── README.md
 │   └── README.md
 └── README.md
+```
 
 Cada carpeta de proyecto contendrá:
 
