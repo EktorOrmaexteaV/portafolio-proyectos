@@ -24,8 +24,7 @@ Este repositorio refleja mi viaje en el mundo de la programación. Cada proyecto
 ---
 
 ## 👨‍💻 Autor
-
-**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
+**[Ektor Ormaetxea V](https://github.com/EktorOrmaexteaV)**
 
 ---
 

@@ -30,8 +30,7 @@ Aquí encontrarás los proyectos de C++ que he desarrollado. Cada proyecto está
 ---
 
 ## 👨‍💻 Autor
-
-**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
+**[Ektor Ormaetxea V](https://github.com/EktorOrmaexteaV)**
 
 ---
 

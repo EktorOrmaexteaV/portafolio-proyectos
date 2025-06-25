@@ -61,8 +61,7 @@ Este repositorio es una muestra de mi compromiso con el aprendizaje continuo y m
 ---
 
 ## 👨‍💻 Autor
-
-**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
+**[Ektor Ormaetxea V](https://github.com/EktorOrmaexteaV)**
 
 ---
 

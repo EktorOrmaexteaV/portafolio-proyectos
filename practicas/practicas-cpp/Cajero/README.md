@@ -84,8 +84,7 @@ Historial de acciones por cuenta, incluyendo:
 ---
 
 ## 👨‍💻 Autor
-
-**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
+**[Ektor Ormaetxea V](https://github.com/EktorOrmaexteaV)**
 
 ---
 
