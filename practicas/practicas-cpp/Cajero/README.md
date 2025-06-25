@@ -1,4 +1,5 @@
 # 🏧 Simulador de Cajero Automático en C++
+## Usando archivos planos
 
 Este proyecto es un **simulador de cajero automático por consola**, desarrollado en C++ utilizando programación orientada a objetos. Permite la creación y gestión de múltiples cuentas, operaciones bancarias básicas y registro de logs por usuario.
 
