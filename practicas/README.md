@@ -62,10 +62,9 @@ Este repositorio es una muestra de mi compromiso con el aprendizaje continuo y m
 
 ## 👨‍💻 Autor
 
-**Ektor Ormaetxea V** (https://github.com/EktorOrmaexteaV)
+**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
 
 ---
 
-### 📄 Licencia
-
-Este trabajo se ofrece bajo la licencia MIT (o la licencia que prefieras). Siéntete libre de explorar, aprender y usar los ejemplos para tus propios fines educativos.
+### 🌐 Licencia
+Proyecto libre para fines educativos y personales.
