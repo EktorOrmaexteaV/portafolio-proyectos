@@ -31,10 +31,9 @@ Aquí encontrarás los proyectos de C++ que he desarrollado. Cada proyecto está
 
 ## 👨‍💻 Autor
 
-**Ektor Ormaetxea V**
+**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
 
 ---
 
-### 📄 Licencia
-
-Los proyectos en esta carpeta son de código abierto y están disponibles para fines educativos y personales.
+### 🌐 Licencia
+Proyecto libre para fines educativos y personales.

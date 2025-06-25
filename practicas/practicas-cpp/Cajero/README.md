@@ -85,8 +85,7 @@ Historial de acciones por cuenta, incluyendo:
 
 ## 👨‍💻 Autor
 
-**Ektor Ormaetxea V**  
-💡 Aprendiendo y creando con C++
+**Ektor Ormaetxea (https://github.com/EktorOrmaexteaV)V**
 
 ---
 
