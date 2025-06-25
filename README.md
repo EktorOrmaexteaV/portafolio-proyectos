@@ -6,7 +6,7 @@ Este repositorio sirve como un **portafolio personal** y un espacio de trabajo p
 
 ## 🎯 Proyectos Incluidos
 
-* **[Proyecto Cajero Automático](portafolio-proyectos/practicas/practicas-cpp/Cajero)**:
+* **[Proyecto: Cajero](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-cpp/Cajero)**:
     * **Descripción**: Un simulador de cajero automático por consola desarrollado en C++, utilizando programación orientada a objetos para gestionar cuentas, realizar transacciones y registrar logs.
     * **Tecnologías**: C++, POO, manejo de archivos de texto.
     * **Estado**: Completo (práctica inicial).
