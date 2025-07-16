@@ -70,11 +70,12 @@ cd ..
 
 ## 📄 Creación de la base de datos y tablas
 
-### Creación de la base de datos y selección
+```sql
+-- Creación de la base de datos y selección
 CREATE DATABASE IF NOT EXISTS cajero;
 USE cajero;
 
-### Tabla `usuario`
+-- Tabla `usuario`
 CREATE TABLE usuario (
     ID VARCHAR(20) PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -82,7 +83,7 @@ CREATE TABLE usuario (
     fecha_alta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-### Tabla `cuenta`
+-- Tabla `cuenta`
 CREATE TABLE cuenta (
     ID VARCHAR(50) PRIMARY KEY,
     ID_Usuario VARCHAR(20) NOT NULL,
@@ -92,7 +93,7 @@ CREATE TABLE cuenta (
     FOREIGN KEY (ID_Usuario) REFERENCES usuario(ID) ON DELETE RESTRICT
 );
 
-### Tabla `transaccion`
+-- Tabla `transaccion`
 CREATE TABLE transaccion (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     ID_Cuenta VARCHAR(50),
@@ -117,7 +118,8 @@ CREATE TABLE transaccion (
     FOREIGN KEY (ID_Usuario) REFERENCES usuario(ID) ON DELETE RESTRICT
 );
 
-### Trigger para registrar automáticamente el alta de usuario
+-- Triggers
+-- Trigger para registrar automáticamente el alta de usuario
 DELIMITER //
 CREATE TRIGGER after_usuario_insert
 AFTER INSERT ON usuario
@@ -128,7 +130,7 @@ BEGIN
 END//
 DELIMITER ;
 
-### Trigger para registrar la creación de cuentas
+-- Trigger para registrar la creación de cuentas
 DELIMITER //
 CREATE TRIGGER after_cuenta_insert
 AFTER INSERT ON cuenta
@@ -140,7 +142,7 @@ BEGIN
 END//
 DELIMITER ;
 
-### Trigger para actualizar saldo en retiros
+-- Trigger para actualizar saldo en retiros
 DELIMITER //
 CREATE TRIGGER before_retiro_update
 BEFORE UPDATE ON cuenta
@@ -151,6 +153,7 @@ BEGIN
     END IF;
 END//
 DELIMITER ;
+```
 
 ---
 
