@@ -20,12 +20,26 @@ Aquí encontrarás los proyectos de C++ que he desarrollado. Cada proyecto está
 * **Estado**: Completo (práctica inicial).
 ---
 
+### 🏧 [Simulador de Cajero Automático con conexión a bases de datos MySQL](CajeroBD/)
+
+* **Descripción**: Un sistema de cajero automático por consola mejorado, que integra una base de datos MySQL para una gestión más robusta de las cuentas y transacciones bancarias. Permite realizar operaciones como consulta de saldo, depósitos, retiros y cambio de PIN, con registro de transacciones en la base de datos.
+* **Tecnologías Clave**: C++, Programación Orientada a Objetos (POO), Manejo de Bases de Datos (MySQL), Estructuras de Control.
+* **Aprendizajes Destacados**: 
+    * Implementación de clases y objetos para representar entidades bancarias.
+    * Persistencia de datos utilizando bases de datos MySQL.
+    * Manejo de errores y validaciones básicas en las transacciones.
+    * Organización de código en múltiples archivos (`.h` y `.cpp`).
+* **Estado**: Completo (versión mejorada). 
+---
+
 ## 🛠️ Herramientas Utilizadas
 
 * **Lenguaje**: C++
 * **Compilador**: g++ (o similar, compatible con C++11 o superior)
 * **Editor de Código**: Visual Studio Code (recomendado)
 * **Control de Versiones**: Git
+* **Sistemas Operativos**: Linux (recomendado)
+* **Servidores**: MySQL
 
 ---
 

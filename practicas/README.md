@@ -19,7 +19,29 @@ portafolio-proyectos
 │   ├── practicas-cpp/
 │   │   └── Cajero/
 │   │   │   ├── src/
+│   │   │   │   ├── cajero.cpp
+│   │   │   │   ├── cajero.h
+│   │   │   │   └── main.cpp
+│   │   │   ├── Logs/
 │   │   │   ├── cuentas.txt
+│   │   │   └── README.md
+│   │   ├── CajeroBD/
+│   │   │   ├── src/
+│   │   │   │   ├── Cajero/
+│   │   │   │   │   ├── Cajero.cpp
+│   │   │   │   │   ├── Cajero.h
+│   │   │   │   │   └── main.cpp
+│   │   │   │   ├── DatabaseManager/
+│   │   │   │   │   ├── DatabaseManager.cpp
+│   │   │   │   │   └── DatabaseManager.h
+│   │   │   │   └── Utils/
+│   │   │   │   │   ├── utils.cpp
+│   │   │   │   │   └── utils.h
+│   │   │   ├── BD SQL/
+│   │   │   │   ├── configuracion_bd_cajero.sql
+│   │   │   │   ├── configuracion_cuenta_ejemplo.sql
+│   │   │   │   └── otras_consultas.sql
+│   │   │   ├── database.properties
 │   │   │   └── README.md
 │   │   └── README.md
 │   └── README.md
@@ -41,10 +63,16 @@ A continuación, se listan los lenguajes de programación y algunos de los proye
 
 ### C++
 
-* **[Simulador de Cajero Automático](practicas-cpp/Cajero)**:
+* **Cajero: [Simulador de Cajero Automático](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-cpp/Cajero)**:
     * **Descripción**: Un sistema de cajero automático por consola con gestión de cuentas, transacciones básicas (depósito, retiro, consulta de saldo, cambio de PIN) y registro de logs de usuario. Desarrollado en C++ usando POO.
     * **Tecnologías**: C++, Programación Orientada a Objetos, Manejo de Archivos.
     * **Aprendizajes Clave**: Refuerzo de lógica de programación, estructuras de control, manejo de archivos y POO.
+---
+
+* **CajeroBD: [Simulador de Cajero Automático con Base de Datos MySQL](google.com)**:
+    * **Descripción**: Un simulador de cajero automático por consola que integra una base de datos MySQL para una gestión eficiente de cuentas y transacciones.
+    * **Tecnologías**: C++, Programación Orientada a Objetos, Manejo de Bases de Datos (MySQL), Estructuras de Control.
+    * **Aprendizajes Clave**: Refuerzo de lógica de programación, estructuras de control, manejo de bases de datos y POO.
 ---
 
 ## 🛠️ Herramientas y Tecnologías que Utilizo
@@ -53,6 +81,7 @@ A continuación, se listan los lenguajes de programación y algunos de los proye
 * **Entornos de Desarrollo (IDE/Editor)**: Visual Studio Code, Code::Blocks, eclipse.
 * **Control de Versiones**: Git & GitHub.
 * **Sistemas Operativos**: (Linux).
+* **Servidores**: MySQL.
 
 ---
 

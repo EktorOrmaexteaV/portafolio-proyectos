@@ -79,7 +79,9 @@ Historial de acciones por cuenta, incluyendo:
 ---
 
 ## 📌 Posibles mejoras
-- [ ] Uso de bases de datos en vez de texto plano
+- [x] Uso de bases de datos en vez de texto plano
+- [ ] Intepretación al lenguaje JAVA.
+- [ ] Intepretación al lenguaje JAVA con entorno gráfico.
 
 ---
 
