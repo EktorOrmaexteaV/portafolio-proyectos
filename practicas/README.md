@@ -69,7 +69,7 @@ A continuación, se listan los lenguajes de programación y algunos de los proye
     * **Aprendizajes Clave**: Refuerzo de lógica de programación, estructuras de control, manejo de archivos y POO.
 ---
 
-* **CajeroBD: [Simulador de Cajero Automático con Base de Datos MySQL](google.com)**:
+* **CajeroBD: [Simulador de Cajero Automático con Base de Datos MySQL](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-cpp/CajeroBD)**:
     * **Descripción**: Un simulador de cajero automático por consola que integra una base de datos MySQL para una gestión eficiente de cuentas y transacciones.
     * **Tecnologías**: C++, Programación Orientada a Objetos, Manejo de Bases de Datos (MySQL), Estructuras de Control.
     * **Aprendizajes Clave**: Refuerzo de lógica de programación, estructuras de control, manejo de bases de datos y POO.
