@@ -11,7 +11,7 @@ Este repositorio sirve como un **portafolio personal** y un espacio de trabajo p
   - **Tecnologías**: C++, POO, manejo de archivos de texto.
   - **Estado**: Completo (práctica inicial).
 
-* **[Proyecto: CajeroBD](CajeroBD/)**:
+* **[Proyecto: CajeroBD](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-cpp/CajeroBD)**:
   - **Descripción**: Simulador de cajero automático por consola desarrollado en C++, empleando programación orientada a objetos para gestionar cuentas, realizar transacciones y registrar logs. En esta versión, se reemplazó el manejo de archivos de texto por una base de datos MySQL para un control más robusto y estructurado de la información.
   - **Tecnologías**: C++, POO y MySQL
   - **Estado**: Completo (versión mejorada).
