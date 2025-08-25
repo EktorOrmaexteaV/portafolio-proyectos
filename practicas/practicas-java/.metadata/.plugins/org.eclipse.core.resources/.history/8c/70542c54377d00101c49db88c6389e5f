@@ -1,0 +1,392 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+/**
+ * Cuenta.java
+ * Ventana que muestra la información de la cuenta del usuario,
+ * incluyendo el número de cuenta, el usuario y el saldo actual.
+ * Permite realizar operaciones como depositar y retirar saldo,
+ * cambiar el PIN y generar un reporte.
+ * 
+ * @author Ektor Ormaetxea V
+ */
+public class Cuenta {
+	private JFrame frmCuenta;
+
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+	private String usuario;
+	private String saldo;
+	private JTextField txtSaldo;
+
+	/**
+	 * Constructor de la clase Cuenta.
+	 * @param cuenta Número de cuenta del usuario.
+	 */ 
+	public Cuenta(String cuenta) {
+		this.cuenta = cuenta;
+		
+		if(!cajero.confirmarCuenta(cuenta)) {			
+			JOptionPane.showMessageDialog(
+					frmCuenta,
+					"<html>" +
+				 "Cuenta no encontrada <br>"+                    
+				 "Por favor, ingrese una cuenta válida.<br>" +
+				  "</html>",
+				 "Error",
+				 JOptionPane.ERROR_MESSAGE
+			 );
+			
+			frmCuenta.dispose();
+			new Main();
+		}
+		usuario = cajero.getUsuarioSesion();
+		saldo = String.valueOf(cajero.getSaldoSesion());
+		iniciar();
+	}
+	
+	private void iniciar() {
+		// Crear el JFrame
+		frmCuenta = new JFrame();
+		frmCuenta.setTitle("Cajero");
+		frmCuenta.getContentPane().setBackground(new Color(60, 63, 65));
+		frmCuenta.getContentPane().setLayout(null);
+		
+		// Crear un panel para contener los componentes
+		JPanel panel1 = new JPanel();
+		panel1.setBounds(50, 100, 500, 400);
+		frmCuenta.getContentPane().add(panel1);
+		panel1.setLayout(null);
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(new Color(60, 63, 65));
+		panel2.setBounds(50, 70, 400, 250);
+		panel1.add(panel2);
+		panel2.setLayout(null);
+		
+		JLabel lblNmeroDeCuenta = new JLabel("Número de cuenta: ");
+		lblNmeroDeCuenta.setForeground(new Color(204, 204, 204));
+		lblNmeroDeCuenta.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNmeroDeCuenta.setBounds(12, 35, 150, 28);
+		panel2.add(lblNmeroDeCuenta);
+		
+		JLabel lblCuenta = new JLabel(cuenta);
+		lblCuenta.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblCuenta.setFont(new Font("Courier 10 Pitch", Font.PLAIN, 15));
+		lblCuenta.setBounds(171, 35, 185, 28);
+		panel2.add(lblCuenta);
+		
+		JLabel lblNewLabel = new JLabel("Bienvenido:");
+		lblNewLabel.setForeground(new Color(204, 204, 204));
+		lblNewLabel.setBounds(60, 72, 71, 17);
+		panel2.add(lblNewLabel);
+		
+		JLabel lblSaldoActual = new JLabel("Saldo actual:     €");
+		lblSaldoActual.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblSaldoActual.setBounds(60, 140, 98, 17);
+		panel2.add(lblSaldoActual);
+		
+		txtSaldo = new JTextField();
+		txtSaldo.setBounds(165, 138, 71, 21);
+		txtSaldo.setEditable(false);
+		panel2.add(txtSaldo);
+		txtSaldo.setText(saldo);
+		txtSaldo.setColumns(10);
+		
+		JLabel lblUsuario = new JLabel("nn");
+		lblUsuario.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblUsuario.setFont(new Font("Courier 10 Pitch", Font.PLAIN, 15));
+		lblUsuario.setBounds(143, 67, 185, 28);
+		lblUsuario.setText(usuario);
+		panel2.add(lblUsuario);
+		
+		// Botón para consultar saldo
+		JButton btnSalir = new JButton("Salir");		
+		btnSalir.setBounds(570, 440, 100, 30);
+		btnSalir.setForeground(new Color(192, 192, 192));
+		btnSalir.setBackground(new Color(60, 63, 65));
+		frmCuenta.getContentPane().add(btnSalir);
+		
+		JButton btnDepositar = new JButton("<html>\n  <div style='text-align: center;'>\n    Depositar<br>\n    Saldo\n  </div>\n</html>\n");
+		btnDepositar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				depositarSaldo();
+			}
+		});
+		btnDepositar.setBounds(562, 120, 100, 50);
+		frmCuenta.getContentPane().add(btnDepositar);
+		
+		JButton btnRetirar = new JButton("<html>\n  <div style='text-align: center;'>\n    Retirar<br>\n    Saldo\n  </div>\n</html>\n");
+		btnRetirar.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {retirarSaldo();}});
+		btnRetirar.setBounds(562, 182, 100, 50);
+		frmCuenta.getContentPane().add(btnRetirar);
+		
+		JButton btnCambiarPin = new JButton("<html>\n  <div style='text-align: center;'>\n    Cambiar<br>\n    PIN\n  </div>\n</html>\n");
+		btnCambiarPin.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {cambiarPin();}});
+		btnCambiarPin.setBounds(562, 244, 100, 50);
+		frmCuenta.getContentPane().add(btnCambiarPin);
+		
+		JButton btnReporte = new JButton("<html>\n  <div style='text-align: center;'>\n    Reporte\n  </div>\n</html>\n");
+		btnReporte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);				
+				//new VentanaReporte(cuenta);
+			}
+		});
+		btnReporte.setBounds(562, 306, 100, 50);
+		frmCuenta.getContentPane().add(btnReporte);
+		btnSalir.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {confirmarSalida();}});
+		
+		// Configurar el JFrame
+		frmCuenta.setBounds(100, 100, 700, 600);		
+		frmCuenta.setResizable(false);
+		frmCuenta.setVisible(true);
+		frmCuenta.setLocationRelativeTo(null);
+		frmCuenta.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		frmCuenta.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmCuenta.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		        confirmarSalida();
+		    }
+		});
+	}
+	
+	private void confirmarSalida() {
+		int respuesta = JOptionPane.showConfirmDialog(frmCuenta, "¿"
+				+ "Seguro que desea salir del cajero?", "Confirmar salida",
+				JOptionPane.YES_NO_OPTION);
+		if (respuesta == JOptionPane.YES_OPTION) {
+			System.exit(0);			
+		}
+	}
+	
+	public static String pedirPIN(String mensaje) {
+		JPasswordField pinField = new JPasswordField();		
+		SwingUtilities.invokeLater(() -> pinField.requestFocusInWindow());		
+		Object[] message = {mensaje, pinField};
+		
+		int option = JOptionPane.showConfirmDialog(
+				null, 
+				message, 
+				"Nuevo PIN", 
+				JOptionPane.OK_CANCEL_OPTION, 
+				JOptionPane.PLAIN_MESSAGE);
+		
+		if (option == JOptionPane.OK_OPTION) {
+			return new String(pinField.getPassword());			
+		} else {
+			return null;
+		}
+	}
+	
+	private void depositarSaldo() {
+		String deposito = JOptionPane.showInputDialog(
+				frmCuenta,
+				"<html>" +
+			 "Ingrese la cantidad a depositar:<br>"+                    
+			 "</html>",
+			 "Depositar saldo",
+			 JOptionPane.PLAIN_MESSAGE
+		 );
+		
+		if(deposito != null && !deposito.isEmpty()) {
+			try {
+				double cantidad = Double.parseDouble(deposito);
+				if (cantidad > 0) {
+					if(cantidad <= cajero.getMontoMaximo()) {
+						JOptionPane.showMessageDialog(
+								frmCuenta,
+								"<html>" +
+							 "Depósito exitoso.<br>"+                    
+							 "Se han depositado: " + cantidad + " €<br>" +
+							  "</html>",
+							 "Depósito exitoso",
+							 JOptionPane.INFORMATION_MESSAGE);
+						cajero.realizarDeposito(cuenta, cantidad);
+						txtSaldo.setText(String.valueOf(cajero.getSaldoSesion()));
+					} else {
+						JOptionPane.showMessageDialog(
+								frmCuenta,
+								"<html>" +
+							 "Cantidad excede el monto máximo permitido.<br>"+                    
+							 "El monto máximo es: " + cajero.getMontoMaximo() + " €<br>" +
+							  "</html>",
+							 "Error",
+							 JOptionPane.ERROR_MESSAGE);
+					} 
+					
+					if (cantidad <= 0) {
+						JOptionPane.showMessageDialog(
+								frmCuenta,
+								"<html>" +
+							 "Cantidad inválida. Por favor, ingrese un número positivo.<br>"+                    
+							 "</html>",
+							 "Error",
+							 JOptionPane.ERROR_MESSAGE);
+					}
+				}
+						
+			} catch (NumberFormatException ex) {
+				JOptionPane.showMessageDialog(
+						frmCuenta,
+						"<html>" +
+					 "Entrada inválida. Por favor, ingrese un número válido.<br>"+                    
+					 "</html>",
+					 "Error",
+					 JOptionPane.ERROR_MESSAGE);
+			}			
+		}
+	}
+	
+	private void retirarSaldo() {
+		String retiro = JOptionPane.showInputDialog(
+				frmCuenta,
+				"<html>" +
+			 "Ingrese la cantidad a retirar:<br>"+                    
+			 "</html>",
+			 "Retirar saldo",
+			 JOptionPane.PLAIN_MESSAGE
+		 );
+		
+		if(retiro != null && !retiro.isEmpty()) {
+			try {
+				double cantidad = Double.parseDouble(retiro);
+				if (cantidad > 0) {
+					if(cantidad <= cajero.getMontoMaximo()) {
+						if(cantidad <= cajero.getSaldoSesion()) {
+							JOptionPane.showMessageDialog(
+									frmCuenta,
+									"<html>" +
+								 "Retiro exitoso.<br>"+                    
+								 "Se han retirado: " + cantidad + " €<br>" +
+								  "</html>",
+								 "Retiro exitoso",
+								 JOptionPane.INFORMATION_MESSAGE);
+							cajero.realizarRetiro(cuenta, cantidad);
+							txtSaldo.setText(String.valueOf(cajero.getSaldoSesion()));
+						} else {
+							JOptionPane.showMessageDialog(
+									frmCuenta,
+									"<html>" +
+								 "Fondos insuficientes para realizar el retiro.<br>"+                    
+								 "</html>",
+								 "Error",
+								 JOptionPane.ERROR_MESSAGE);
+						}
+					} else {
+						JOptionPane.showMessageDialog(
+								frmCuenta,
+								"<html>" +
+							 "Cantidad excede el monto máximo permitido.<br>"+                    
+							 "El monto máximo es: " + cajero.getMontoMaximo() + " €<br>" +
+							  "</html>",
+							 "Error",
+							 JOptionPane.ERROR_MESSAGE);
+					} 
+					
+					if (cantidad <= 0) {
+						JOptionPane.showMessageDialog(
+								frmCuenta,
+								"<html>" +
+							 "Cantidad inválida. Por favor, ingrese un número positivo.<br>"+                    
+							 "</html>",
+							 "Error",
+							 JOptionPane.ERROR_MESSAGE);
+					}
+				}
+						
+			} catch (NumberFormatException ex) {
+				JOptionPane.showMessageDialog(
+						frmCuenta,
+						"<html>" +
+					 "Entrada inválida. Por favor, ingrese un número válido.<br>"+                    
+					 "</html>",
+					 "Error",
+					 JOptionPane.ERROR_MESSAGE);
+			}			
+		}
+	}
+	
+	private void cambiarPin() {
+		String pinActual = pedirPIN("Introduce tu PIN actual:");
+        String pin = cajero.getPinSesion();
+        
+        // Validación del PIN actual
+        if (pinActual.equals(pin)) {
+            String nuevoPIN1 = pedirPIN("Introduce tu nuevo PIN:");
+            if (nuevoPIN1 == null || nuevoPIN1.length() != cajero.getDigitosPIN()) {
+                JOptionPane.showMessageDialog(frmCuenta, 
+                        "El nuevo PIN debe tener 4 dígitos numéricos.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }else if (nuevoPIN1.equals(pinActual)) { // Verificar si el nuevo PIN es igual al actual
+                JOptionPane.showMessageDialog(frmCuenta, 
+                        "El nuevo PIN no puede ser igual al PIN actual.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                );                
+                return;
+            }
+            
+            // Confirmación del nuevo PIN
+            String nuevoPIN2 = pedirPIN("Confirma tu nuevo PIN:");
+            if (nuevoPIN1.equals(nuevoPIN2)) { // Verificar si los PINs coinciden
+                cajero.cambiarPIN(nuevoPIN1, cuenta); // Actualizar el PIN con el nuevo valor
+                JOptionPane.showMessageDialog(frmCuenta, 
+                        "PIN cambiado exitosamente.", 
+                        "Éxito", 
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                        
+                JOptionPane.showMessageDialog(null, 
+                        "Sesión cerrada.", 
+                        "Salir", 
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                cajero.cerrarSesion();
+                
+                // Cerrar todas las ventanas abiertas
+                for (Window window : Window.getWindows()) {
+                    window.dispose();
+                }
+                new PIN(cuenta);                
+            } else {
+                JOptionPane.showMessageDialog(frmCuenta, 
+                        "Los PINs no coinciden. Inténtalo de nuevo.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } else {
+            JOptionPane.showMessageDialog(frmCuenta, 
+                    "PIN actual incorrecto.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				new Cuenta("11111111111111111111"); // Aquí se debe pasar el número de cuenta real
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
+}

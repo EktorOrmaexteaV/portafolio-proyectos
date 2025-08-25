@@ -1,65 +1,66 @@
-# 🏧 Simulador de Cajero Automático con Base de Datos MySQL
-## Integrando MySQL
+# Simulador de Cajero Automático en C++ con Base de Datos
+## Versión mejorada usando MySQL
 
-Este proyecto es un **simulador de cajero automático por consola**, desarrollado en C++ utilizando programación orientada a objetos y una base de datos MySQL. Permite la creación y gestión de múltiples cuentas, operaciones bancarias básicas y registro de transacciones.
+Este proyecto es una **versión mejorada** del [Cajero en C++ con archivos planos](../Cajero), donde se reemplazó el manejo de archivos de texto por una **base de datos MySQL** para un control más robusto y escalable.
 
-> Proyecto mejorado para reforzar lógica de programación, estructuras de control, manejo de bases de datos y POO en C++.
-
----
-
-## 🎯 Funcionalidades
-
-- 🔐 Login con número de cuenta y PIN
-- 💰 Consultar saldo
-- ➕ Depositar dinero
-- ➖ Retirar dinero con validación de fondos
-- 🔄 Cambiar PIN
-- 📄 Guardado automático de cuentas y transacciones en base de datos
+> Proyecto desarrollado como práctica para reforzar conceptos de programación orientada a objetos, conexión a bases de datos y modularización de código en C++.
 
 ---
 
-## 🧱 Estructura del Proyecto
+## Funcionalidades
+
+- Inicio de sesión con número de cuenta y PIN.
+- Consultar saldo.
+- Depositar dinero.
+- Retirar dinero (validación de fondos).
+- Cambio de PIN.
+- Registro de operaciones en base de datos y logs.
+- Configuración externa vía archivo `database.properties`.
+
+---
+
+## Estructura del Proyecto
 
 ```
-ProyectoCajeroBD/
+CajeroBD/
 ├── src/
-│   ├── Cajero/
-│   │   ├── Cajero.cpp        # Implementación de métodos de la clase Cajero
-│   │   ├── Cajero.h          # Declaración de la clase Cajero
-│   ├── DatabaseManager/
-│   │   ├── DatabaseManager.cpp  # Manejo de conexión y consultas MySQL
-│   │   └── DatabaseManager.h
-│   ├── Utils/
-│   │   ├── utils.cpp          # Funciones utilitarias
-│   │   └── utils.h
-│   └── main.cpp               # Menú principal e interacción
+│ ├── Cajero/
+│ │ ├── Cajero.cpp
+│ │ └── Cajero.h
+│ ├── DatabaseManager/
+│ │ ├── DatabaseManager.cpp # Manejo de conexión y consultas a MySQL
+│ │ └── DatabaseManager.h
+│ └── utils/
+│ ├── utils.cpp
+│ └── utils.h
 ├── BD SQL/
-│   ├── configuracion_bd_cajero.sql  # Scripts de configuración de BD
-│   ├── configuracion_cuenta_ejemplo.sql
-│   └── otras_consultas.sql
-├── database.properties       # Configuración de conexión a la base de datos
-└── ProyectoCajeroBD.md       # Archivo Markdown del proyecto del Cajero en el que está basado este proyecto
+│ ├── configuracion_bd_cajero.sql # Script de creación de la BD
+│ ├── configuracion_cuenta_ejemplo.sql # Script de datos iniciales
+│ └── otras_consultas.sql # Ejemplos adicionales
+├── database.properties # Archivo con parámetros de conexión
+├── main # Ejecutable compilado
+└── README.md
 ```
 
 ---
 
-## ⚙️ Compilación y ejecución
+## Compilación y ejecución
 
-### 🖥️ Requisitos
+### Requisitos
 
 - Compilador de C++ (g++, clang, etc.)
 - Sistema compatible con terminal (Linux, macOS o Windows con WSL/MinGW)
 - Servidor MySQL
 - (Opcional) Code::Blocks o VS Code
 
-### 🔧 Compilación desde terminal
+### Compilación desde terminal
 
 ```bash
 cd src
 g++ Cajero/*.cpp DatabaseManager/*.cpp Utils/*.cpp main.cpp -o ../main -lmysqlclient
 ```
 
-### ▶️ Ejecución
+### Ejecución
 
 ```bash
 cd ..
@@ -68,7 +69,7 @@ cd ..
 
 ---
 
-## 📄 Creación de la base de datos y tablas
+## Creación de la base de datos y tablas
 
 ```sql
 -- Creación de la base de datos y selección
@@ -157,16 +158,22 @@ DELIMITER ;
 
 ---
 
-## 📌 Posibles mejoras
+## Mejoras respecto a la versión anterior
+- [x] Sustitución de archivos de texto por MySQL
+- [x] Gestión modular (clases separadas en carpetas).
+- [x] Uso de triggers para registrar transacciones en la base de datos.
+---
+
+## Posibles mejoras
 - [x] Uso de bases de datos en vez de texto plano
 - [ ] Intepretación al lenguaje JAVA.
 - [ ] Intepretación al lenguaje JAVA con entorno gráfico.
 ---
 
-## 👨‍💻 Autor
+## Autor
 **[Ektor Ormaetxea V](https://github.com/EktorOrmaexteaV)**
 
 ---
 
-### 🌐 Licencia
+### Licencia
 Proyecto libre para fines educativos y personales.

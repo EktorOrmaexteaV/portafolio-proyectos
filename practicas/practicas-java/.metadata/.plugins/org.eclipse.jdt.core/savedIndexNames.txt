@@ -1,0 +1,15 @@
+INDEX VERSION 1.134+/home/ektor/portafolio-proyectos/practicas/practicas-java/.metadata/.plugins/org.eclipse.jdt.core
+700007244.index
+3103963309.index
+3569349696.index
+2958864389.index
+1865797976.index
+2190597080.index
+1976133402.index
+3638822214.index
+991570131.index
+3505778575.index
+3198113296.index
+1991299238.index
+635613770.index
+1401211173.index

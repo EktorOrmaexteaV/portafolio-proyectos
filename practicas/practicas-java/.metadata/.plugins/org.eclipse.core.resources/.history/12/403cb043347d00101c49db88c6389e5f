@@ -1,0 +1,326 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+/**
+ * PIN.java
+ * Ventana para ingresar el PIN del cajero automático.
+ * Permite al usuario ingresar su número PIN y validar su cuenta.
+ * 
+ * @author Ektor Ormaetxea V
+ */
+public class PIN {
+
+	private JFrame frmPIN;
+	private JPasswordField txtPIN;
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+    private int MAX_INTENTOS = 3;
+    private String nombre;
+    private StringBuilder pinIngresado = new StringBuilder();
+
+
+    /**
+	 * Constructor de la clase PIN.
+	 * @param cuenta Número de cuenta del usuario.
+	 */
+	public PIN(String cuenta) {
+		this.cuenta = cuenta;
+		iniciar();
+		
+		JOptionPane.showMessageDialog(
+				frmPIN,
+				"<html>" +
+                "Cuenta ingresada satisfactoriamente <br>"+                    
+                "Por favor, ingrese su número PIN.<br>" +
+                "A: Aceptar<br>" +
+                "C: Borrar el display<br>" +
+                "Salir: Cierra esta ventana y retorna a la ventana principal<br><br>"+
+                "<b>Tienes 3 intentos</b>" +
+                 "</html>",
+                "Instrucciones",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+	}
+	
+	/**
+	 * Inicia la interfaz gráfica del cajero.
+	 */
+	private void iniciar() {
+		frmPIN = new JFrame();
+		frmPIN.setSize(new Dimension(400, 700));
+		frmPIN.getContentPane().setSize(new Dimension(400, 700));
+		frmPIN.setTitle("Cajero");
+		frmPIN.getContentPane().setBackground(new Color(204, 204, 204));
+		frmPIN.getContentPane().setLayout(null);
+		
+		JPanel panelSup = new JPanel();
+		panelSup.setBackground(new Color(60, 63, 65));
+		panelSup.setSize(new Dimension(360, 90));
+		//panelSup.setBounds(12, 31, 360, 90);
+		panelSup.setBounds(20, 15,360,90);
+		frmPIN.getContentPane().add(panelSup);
+		panelSup.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("PIN:");
+		lblNewLabel.setForeground(new Color(204, 204, 204));
+		lblNewLabel.setBounds(60, 35, 39, 21);
+		panelSup.add(lblNewLabel);
+		
+		txtPIN = new JPasswordField();
+		txtPIN.setFont(new Font("Courier 10 Pitch", Font.PLAIN, 12));
+		txtPIN.setBounds(100, 35, 62, 21);
+		panelSup.add(txtPIN);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirmarSalida();
+			}
+		});
+		btnSalir.setBounds(174, 32, 105, 27);
+		panelSup.add(btnSalir);
+		
+		JPanel panelInf = new JPanel();
+		panelInf.setSize(new Dimension(360, 360));
+		panelInf.setBackground(new Color(60, 63, 65));
+		panelInf.setBounds(20, 117, 360, 360);
+		frmPIN.getContentPane().add(panelInf);
+		panelInf.setLayout(null);
+		
+		JButton btn1 = new JButton("1");
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("1");
+			}
+		});
+		btn1.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn1.setBounds(60, 30, 60, 60);
+		panelInf.add(btn1);
+		
+		JButton btn2 = new JButton("2");
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("2");
+			}
+		});
+		btn2.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn2.setBounds(150, 30, 60, 60);
+		panelInf.add(btn2);
+		
+		JButton btn3 = new JButton("3");
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("3");
+			}
+		});
+		btn3.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn3.setBounds(240, 30, 60, 60);
+		panelInf.add(btn3);
+		
+		JButton btn4 = new JButton("4");
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("4");
+			}
+		});
+		btn4.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn4.setBounds(60, 110, 60, 60);
+		panelInf.add(btn4);
+		
+		JButton btn5 = new JButton("5");
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("5");
+			}
+		});
+		btn5.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn5.setBounds(150, 110, 60, 60);
+		panelInf.add(btn5);
+		
+		JButton btn6 = new JButton("6");
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("6");
+			}
+		});
+		btn6.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn6.setBounds(240, 110, 60, 60);
+		panelInf.add(btn6);
+		
+		JButton btn7 = new JButton("7");
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("7");
+			}
+		});
+		btn7.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn7.setBounds(60, 190, 60, 60);
+		panelInf.add(btn7);
+		
+		JButton btn8 = new JButton("8");
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("8");
+			}
+		});
+		btn8.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn8.setBounds(150, 190, 60, 60);
+		panelInf.add(btn8);
+		
+		JButton btn9 = new JButton("9");
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("9");
+			}
+		});
+		btn9.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn9.setBounds(240, 190, 60, 60);
+		panelInf.add(btn9);
+				
+		JButton btn0 = new JButton("0");
+		btn0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ingresarNumero("0");
+			}
+		});
+		btn0.setFont(new Font("Dialog", Font.BOLD, 20));
+		btn0.setBounds(150, 270, 60, 60);
+		panelInf.add(btn0);
+		
+		JButton btnA = new JButton("A");
+		btnA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				validarPIN();				
+			}
+		});
+		btnA.setFont(new Font("Dialog", Font.BOLD, 20));
+		btnA.setBounds(60, 270, 60, 60);
+		btnA.setBackground(Color.decode("#499c54"));
+		panelInf.add(btnA);
+		
+		JButton btnC = new JButton("C");
+		btnC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtPIN.setText(""); 
+				JOptionPane.showMessageDialog(frmPIN, 
+						"Display borrado.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnC.setFont(new Font("Dialog", Font.BOLD, 20));
+		btnC.setBounds(240, 270, 60, 60);
+		btnC.setBackground(Color.decode("#C75450"));
+		panelInf.add(btnC);
+		
+		frmPIN.setBounds(100, 100, 400, 530);
+		frmPIN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPIN.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		        confirmarSalida();
+		    }
+		});
+		
+		frmPIN.setResizable(false);
+		frmPIN.setVisible(true);
+	}
+
+	/**
+	 * Método para ingresar un número en el campo de texto del PIN.
+	 * @param numero El número a ingresar.
+	 */
+	private void ingresarNumero(String numero) {
+	    String currentPIN = new String(txtPIN.getPassword());
+	    txtPIN.setText(currentPIN + numero);
+	}
+	
+	
+	private void pinIncorrecto(){
+		MAX_INTENTOS--;
+		if (MAX_INTENTOS > 0) {
+			JOptionPane.showMessageDialog(frmPIN, 
+					"PIN incorrecto. Intentos restantes: " + MAX_INTENTOS, 
+					"Error de PIN", 
+					JOptionPane.ERROR_MESSAGE);
+			txtPIN.setText(""); // Limpiar el campo de texto
+			pinIngresado.setLength(0);
+		} else {
+			JOptionPane.showMessageDialog(frmPIN, 
+					"Ha agotado los intentos. Saliendo del cajero.", 
+					"Error de PIN", 
+					JOptionPane.ERROR_MESSAGE);
+			frmPIN.dispose();
+			System.exit(0);
+			//new VentanaMain();
+		}
+	}
+	
+	private void validarPIN() {
+		String pinCorrecto = null;        
+        
+        String pinIngresadoTexto = new String(txtPIN.getPassword());
+        
+        if (pinIngresadoTexto.length() != cajero.getDigitosPIN()) {
+        	JOptionPane.showMessageDialog(frmPIN,
+        			"El PIN debe tener " + cajero.getDigitosPIN() + " dígitos.",
+					"Error de PIN",
+					JOptionPane.ERROR_MESSAGE);
+        	pinIncorrecto();
+        	return;        	
+        }
+        
+        if (cajero.confirmarCuenta(cuenta)) {
+        	pinCorrecto = cajero.getPinSesion();
+            nombre = cajero.getUsuarioSesion();
+        }
+        
+        if (pinIngresadoTexto.equals(pinCorrecto)) {
+        	JOptionPane.showMessageDialog(frmPIN,
+        			"Inicio de sesión exitoso.\n" +
+					"Bienvenido " + nombre + ".", 
+					"Éxito",JOptionPane.INFORMATION_MESSAGE);
+        	frmPIN.dispose();
+        	//new VentanaCuenta(cuenta); // Abre la ventana de cuenta
+        	JOptionPane.showMessageDialog(frmPIN, 
+					"Funcionalidad de cuenta no implementada aún.", 
+					"Información", 
+					JOptionPane.INFORMATION_MESSAGE);
+        }
+		else {
+			pinIncorrecto();
+		}
+	}
+	
+	/**
+	 * Muestra un diálogo de confirmación para salir del cajero.
+	 */
+	private void confirmarSalida() {
+		int respuesta = JOptionPane.showConfirmDialog(frmPIN, "¿"
+				+ "Seguro que desea cancelar la operación y " 
+				+ "volver al menú principal?", 
+				"Confirmar salida",
+				JOptionPane.YES_NO_OPTION);
+		if (respuesta == JOptionPane.YES_OPTION) {
+			frmPIN.dispose();
+			new Main(); // Retorna a la ventana principal		
+		}
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				new PIN("11111111111111111111"); // Ejemplo de cuenta
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
+}

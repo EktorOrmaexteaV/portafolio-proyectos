@@ -1,0 +1,23 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+public class Cuenta {
+	private JFrame frmCuenta;
+
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+	private String usuario;
+	private String saldo;
+	private JTextField txtSaldo;
+
+	public Cuenta(String cuenta) {
+		
+	}
+}

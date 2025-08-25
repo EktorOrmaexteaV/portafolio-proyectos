@@ -1,0 +1,168 @@
+package com.managment.utils;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ * Archivo: InputUtils.java
+ * Clase que proporciona métodos para obtener entradas del usuario de manera segura y validar los datos ingresados.
+ * Usa Scanner para leer entradas desde la consola. No para aplicaciones gráficas.
+ * @author Ektor Ormaetxea V
+ */
+public class InputUtils {
+	private static Scanner scanner = new Scanner(System.in);
+
+	/**
+	 * Obtiene una cadena de texto desde el usuario.
+	 * @return La cadena ingresada por el usuario.
+	 */
+    public static String getStringInput() {
+        String input = scanner.nextLine();
+        return input;
+    }
+
+    /**
+	 * Obtiene una cadena de texto desde el usuario con un mensaje de prompt.
+	 * @param prompt Mensaje que se muestra al usuario.
+	 * @return La cadena ingresada por el usuario.
+	 */
+    public static int getIntInput(String prompt) {
+        int value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: debe ingresar un valor entero válido.");
+                scanner.next(); // Consume la entrada inválida
+            } finally {
+                scanner.nextLine(); // Consumir el resto de la línea (salto de línea)
+            }
+        }
+        return value;
+    }
+
+    /**
+     * Obtiene un número entero desde el usuario sin prompt.
+     * @return El número entero ingresado por el usuario.
+     */
+    public static int getIntInput() {
+        return getIntInput(""); // Llama a la versión con prompt vacío
+    }
+
+    /**
+	 * Obtiene un número de punto flotante desde el usuario con un mensaje de prompt.
+	 * @param prompt Mensaje que se muestra al usuario.
+	 * @return El número de punto flotante ingresado por el usuario.
+	 */ 
+    public static float getFloatInput(String prompt) {
+        float value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextFloat();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: debe ingresar un valor numérico válido.");
+                scanner.next();
+            } finally {
+                scanner.nextLine();
+            }
+        }
+        return value;
+    }
+    
+    /**
+     * Obtiene un número de punto flotante desde el usuario sin prompt.
+     * @param prompt Mensaje que se muestra al usuario.
+     * @return El número de punto flotante ingresado por el usuario.
+     */
+    public static double getDoubleInput(String prompt) {
+        double value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: debe ingresar un valor numérico válido.");
+                scanner.next(); // Limpiar el buffer
+            } finally {
+                scanner.nextLine(); // Consumir el resto de la línea
+            }
+        }
+        return value;
+    }
+
+    /**
+	 * Valida si una cadena contiene únicamente dígitos numéricos.
+	 * @param str La cadena a validar.
+	 * @return true si la cadena es válida, false en caso contrario.
+	 */
+    public static boolean validateDigits(String str) {
+        return str != null && !str.isEmpty() && str.matches("\\d+"); // Usa regex
+    }
+
+    /**
+	 * Obtiene una cadena de dígitos numéricos del usuario con un mensaje de prompt.
+	 * @param message Mensaje que se muestra al usuario.
+	 * @return La cadena de dígitos ingresada por el usuario.
+	 */
+    public static String getDigitsInput(String message, int n) {
+        String input;
+        while (true) {
+            System.out.print(message);
+            input = scanner.nextLine();
+            if (!validateDigits(input)) {
+                System.out.printf("Error: la entrada debe contener únicamente dígitos numéricos.%n");
+                continue;
+            }
+            if (input.length() == n) {
+                return input;
+            } else {
+                System.out.printf("Error: la longitud debe ser exactamente de %d dígitos.%n", n);
+            }
+        }
+    }
+    
+    /*
+    Genera una cadena numérica aleatoria de n dígitos, 
+    el primer dígito puede ser 0 si type=0
+    */
+    public static String generateNumberString(int length, int type) {
+        if (length <= 0) {
+            return "";
+        }
+
+        if (type != 0 && type != 1) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        java.util.Random random = new java.util.Random();
+
+        for (int i = 0; i < length; i++) {
+            if (type == 0) {
+                sb.append(random.nextInt(10));
+            } else {
+                if (i == 0) {
+                    sb.append(1 + random.nextInt(9));
+                } else {
+                    sb.append(random.nextInt(10));
+                }
+            }
+        }
+        return sb.toString();
+    }
+    
+    /**
+	 * Cierra el escáner utilizado para la entrada de datos.
+	 * Es importante cerrar el escáner para liberar recursos.
+	 */    
+    public static void closeScanner() {
+        if (scanner != null) {
+            scanner.close();
+        }
+    }    
+}

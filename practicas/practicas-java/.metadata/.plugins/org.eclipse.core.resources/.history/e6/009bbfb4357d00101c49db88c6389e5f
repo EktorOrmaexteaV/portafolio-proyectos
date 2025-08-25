@@ -1,0 +1,208 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+public class Cuenta {
+	private JFrame frmCuenta;
+
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+	private String usuario;
+	private String saldo;
+	private JTextField txtSaldo;
+
+	public Cuenta(String cuenta) {
+		this.cuenta = cuenta;
+		
+		if(!cajero.confirmarCuenta(cuenta)) {			
+			JOptionPane.showMessageDialog(
+					frmCuenta,
+					"<html>" +
+				 "Cuenta no encontrada <br>"+                    
+				 "Por favor, ingrese una cuenta válida.<br>" +
+				  "</html>",
+				 "Error",
+				 JOptionPane.ERROR_MESSAGE
+			 );
+			
+			frmCuenta.dispose();
+			new Main();
+		}
+		usuario = cajero.getUsuarioSesion();
+		saldo = String.valueOf(cajero.getSaldoSesion());
+		iniciar();
+	}
+	
+	private void iniciar() {
+		// Crear el JFrame
+		frmCuenta = new JFrame();
+		frmCuenta.setTitle("Cajero");
+		frmCuenta.getContentPane().setBackground(new Color(60, 63, 65));
+		frmCuenta.getContentPane().setLayout(null);
+		
+		// Crear un panel para contener los componentes
+		JPanel panel1 = new JPanel();
+		panel1.setBounds(50, 100, 500, 400);
+		frmCuenta.getContentPane().add(panel1);
+		panel1.setLayout(null);
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(new Color(60, 63, 65));
+		panel2.setBounds(50, 70, 400, 250);
+		panel1.add(panel2);
+		panel2.setLayout(null);
+		
+		JLabel lblNmeroDeCuenta = new JLabel("Número de cuenta: ");
+		lblNmeroDeCuenta.setForeground(new Color(204, 204, 204));
+		lblNmeroDeCuenta.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNmeroDeCuenta.setBounds(12, 35, 150, 28);
+		panel2.add(lblNmeroDeCuenta);
+		
+		JLabel lblCuenta = new JLabel(cuenta);
+		lblCuenta.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblCuenta.setFont(new Font("Courier 10 Pitch", Font.PLAIN, 15));
+		lblCuenta.setBounds(171, 35, 185, 28);
+		panel2.add(lblCuenta);
+		
+		JLabel lblNewLabel = new JLabel("Bienvenido:");
+		lblNewLabel.setForeground(new Color(204, 204, 204));
+		lblNewLabel.setBounds(60, 72, 71, 17);
+		panel2.add(lblNewLabel);
+		
+		JLabel lblSaldoActual = new JLabel("Saldo actual:     €");
+		lblSaldoActual.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblSaldoActual.setBounds(60, 140, 98, 17);
+		panel2.add(lblSaldoActual);
+		
+		txtSaldo = new JTextField();
+		txtSaldo.setBounds(165, 138, 71, 21);
+		txtSaldo.setEditable(false);
+		panel2.add(txtSaldo);
+		txtSaldo.setText(saldo);
+		txtSaldo.setColumns(10);
+		
+		JLabel lblUsuario = new JLabel("nn");
+		lblUsuario.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		lblUsuario.setFont(new Font("Courier 10 Pitch", Font.PLAIN, 15));
+		lblUsuario.setBounds(143, 67, 185, 28);
+		lblUsuario.setText(usuario);
+		panel2.add(lblUsuario);
+		
+		// Botón para consultar saldo
+		JButton btnSalir = new JButton("Salir");		
+		btnSalir.setBounds(570, 440, 100, 30);
+		btnSalir.setForeground(new Color(192, 192, 192));
+		btnSalir.setBackground(new Color(60, 63, 65));
+		frmCuenta.getContentPane().add(btnSalir);
+		
+		JButton btnDepositar = new JButton("<html>\n  <div style='text-align: center;'>\n    Depositar<br>\n    Saldo\n  </div>\n</html>\n");
+		btnDepositar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+				//depositarSaldo();
+			}
+		});
+		btnDepositar.setBounds(562, 120, 100, 50);
+		frmCuenta.getContentPane().add(btnDepositar);
+		
+		JButton btnRetirar = new JButton("<html>\n  <div style='text-align: center;'>\n    Retirar<br>\n    Saldo\n  </div>\n</html>\n");
+		btnRetirar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+				//retirarSaldo();
+			}
+		});
+		btnRetirar.setBounds(562, 182, 100, 50);
+		frmCuenta.getContentPane().add(btnRetirar);
+		
+		JButton btnCambiarPin = new JButton("<html>\n  <div style='text-align: center;'>\n    Cambiar<br>\n    PIN\n  </div>\n</html>\n");
+		btnCambiarPin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+				//cambiarPin();
+			}
+		});
+		btnCambiarPin.setBounds(562, 244, 100, 50);
+		frmCuenta.getContentPane().add(btnCambiarPin);
+		
+		JButton btnReporte = new JButton("<html>\n  <div style='text-align: center;'>\n    Reporte\n  </div>\n</html>\n");
+		btnReporte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+				//new VentanaReporte(cuenta);
+			}
+		});
+		btnReporte.setBounds(562, 306, 100, 50);
+		frmCuenta.getContentPane().add(btnReporte);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirmarSalida();
+			}
+		});
+		
+		// Configurar el JFrame
+		frmCuenta.setBounds(100, 100, 700, 600);		
+		frmCuenta.setResizable(false);
+		frmCuenta.setVisible(true);
+		frmCuenta.setLocationRelativeTo(null);
+		frmCuenta.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		frmCuenta.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmCuenta.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		        confirmarSalida();
+		    }
+		});
+	}
+	
+	private void confirmarSalida() {
+		int respuesta = JOptionPane.showConfirmDialog(frmCuenta, "¿"
+				+ "Seguro que desea salir del cajero?", "Confirmar salida",
+				JOptionPane.YES_NO_OPTION);
+		if (respuesta == JOptionPane.YES_OPTION) {
+			System.exit(0);			
+		}
+	}
+	
+	public static String pedirPIN(String mensaje) {
+		JPasswordField pinField = new JPasswordField();		
+		SwingUtilities.invokeLater(() -> pinField.requestFocusInWindow());		
+		Object[] message = {mensaje, pinField};
+		
+		int option = JOptionPane.showConfirmDialog(
+				null, 
+				message, 
+				"Nuevo PIN", 
+				JOptionPane.OK_CANCEL_OPTION, 
+				JOptionPane.PLAIN_MESSAGE);
+		
+		if (option == JOptionPane.OK_OPTION) {
+			return new String(pinField.getPassword());			
+		} else {
+			return null;
+		}
+	}
+}

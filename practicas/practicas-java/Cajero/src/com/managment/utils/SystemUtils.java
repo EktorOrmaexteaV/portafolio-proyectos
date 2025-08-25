@@ -1,0 +1,80 @@
+package com.managment.utils;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+/**
+ * Archivo: SystemUtils.java
+ * Clase que contiene métodos utilitarios para manejar la consola y obtener información del sistema.
+ * @author Ektor Ormaetxea V
+ */
+public class SystemUtils {
+	/**
+	 * Limpia la pantalla de la consola.
+	 * Dependiendo del sistema operativo, utiliza comandos específicos para limpiar la pantalla.
+	 */
+    public static void clearScreen() {
+        try {
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else if(os.contains("Unix")){
+            	new ProcessBuilder("clear").inheritIO().start().waitFor();            	
+            } else {
+                System.out.print("\033[H\033[2J"); // Código ANSI para limpiar la pantalla
+                System.out.flush();
+                // Otra opción para Linux/macOS
+                // Runtime.getRuntime().exec("clear");
+            }
+        } catch (final IOException | InterruptedException e) {
+            // Manejar excepciones, quizás la consola no soporte esto
+            System.err.println("No se pudo limpiar la pantalla: " + e.getMessage());
+        }
+    }
+
+    /**
+	 * Pausa la ejecución del programa hasta que el usuario presione Enter.
+	 * Utiliza el método getStringInput de InputUtils para esperar la entrada del usuario.
+	 */
+    public static void pause() {
+        System.out.println("Presione Enter para continuar...");
+        InputUtils.getStringInput(); // Reutiliza el método de InputUtils para leer la línea
+    }
+    
+    /**
+	 * Obtiene la fecha y hora actual formateada como String.
+	 * @param type Tipo de formato: 0 para "ddMMyyyyHHmmss", cualquier otro valor para "yyyy-MM-dd HH:mm:ss".
+	 * @return Fecha y hora actual formateada como String.
+	 */
+    public static String getActualTime(int type){
+        DateTimeFormatter formato;
+        String fechaHoraFormateada = null;
+        // Obtener fecha y hora actual
+        LocalDateTime ahora = LocalDateTime.now();
+
+        // Formatear la fecha y hora   
+        if(type!=0){
+            formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            fechaHoraFormateada = ahora.format(formato);
+        }
+        else {
+            formato = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+            fechaHoraFormateada = ahora.format(formato);
+        }
+        
+        // Retornar la fecha y hora formateada
+        return fechaHoraFormateada;        
+    }
+
+    /**
+	 * Método para salir del programa de manera controlada.
+	 * Muestra un mensaje de despedida, limpia la pantalla y pausa antes de terminar.
+	 */
+    public static void exitProgram() {
+        System.out.println("Saliendo del programa...");
+        clearScreen();
+        pause();
+        System.exit(0); // Termina la JVM
+    }
+}

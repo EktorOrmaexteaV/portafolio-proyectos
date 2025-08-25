@@ -1,0 +1,131 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+/**
+ * Proyerto		: Cajero
+ * Archivo		: Main.java
+ * Descripción	: Simula un sistema de cajero automático básico que permite		
+ * 	              iniciar sesión, consultar saldo, depositar y retirar dinero 
+ *                y crear un reporte que imprime a archivo PDF, usando una base* 
+ * @author EktorOrmaetxeaV
+ */
+public class VentanaMain {
+
+	private JFrame frmCajero;
+
+	/**
+	 * Crea la aplicación.
+	 */
+	public VentanaMain() {
+		iniciar();		
+	}
+
+	/**
+	 * Método para confirmar la salida del cajero.
+	 */
+	private void confirmarSalida() {
+		int respuesta = JOptionPane.showConfirmDialog(frmCajero, "¿"
+				+ "Seguro que desea salir del cajero?", "Confirmar salida",
+				JOptionPane.YES_NO_OPTION);
+		if (respuesta == JOptionPane.YES_OPTION) {
+			System.exit(0);			
+		}
+	}
+	
+	/**
+	 * Iniciar la interfaz gráfica del cajero.
+	 */
+	private void iniciar() {
+		// Crear el JFrame
+		frmCajero = new JFrame();
+		frmCajero.setTitle("Cajero");
+		frmCajero.getContentPane().setBackground(new Color(60, 63, 65));
+		frmCajero.getContentPane().setLayout(null);
+		
+		// Crear un panel para contener los componentes
+		JPanel panel = new JPanel();
+		panel.setBounds(50, 100, 500, 400);
+		frmCajero.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblbienvenidoAlCajero = new JLabel("<html>\n  <div style='text-align: center;'>\n    ¡Bienvenido al Cajero Automático!<br>\n    Por favor, inserte su número de cuenta o<br>\n    dese de alta.\n  </div>\n</html>\n");
+		lblbienvenidoAlCajero.setHorizontalAlignment(SwingConstants.CENTER);
+		lblbienvenidoAlCajero.setFont(new Font("Courier 10 Pitch", Font.BOLD, 18));
+		lblbienvenidoAlCajero.setBounds(83, 106, 336, 174);
+		panel.add(lblbienvenidoAlCajero);
+		
+		//Crear botones
+		
+		// Botón para iniciar sesión
+		JButton btnIniciar = new JButton("<html>\n  <div style='text-align: center;'>\n    Iniciar<br>sesión\n  </div>\n</html>\n");		
+		btnIniciar.setForeground(new Color(192, 192, 192));
+		btnIniciar.setBackground(new Color(60, 63, 65));
+		btnIniciar.setBounds(562, 172, 100, 50);
+		frmCajero.getContentPane().add(btnIniciar);
+		btnIniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmCajero.dispose();
+				new VentanaInicio();				
+			}
+		});
+		
+		JButton btnAlta = new JButton("<html>\n  <div style='text-align: center;'>\n    Dar de<br>alta\n  </div>\n</html>\n");			
+		btnAlta.setForeground(new Color(192, 192, 192));
+		btnAlta.setBackground(new Color(60, 63, 65));
+		btnAlta.setBounds(562, 254, 100, 50);
+		frmCajero.getContentPane().add(btnAlta);
+		btnAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frmCajero, "Funcionalidad de alta no implementada aún.", "Información", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});	
+		
+		// Botón para consultar saldo
+		JButton btnSalir = new JButton("Salir");		
+		btnSalir.setForeground(new Color(192, 192, 192));
+		btnSalir.setBackground(new Color(60, 63, 65));
+		btnSalir.setBounds(562, 401, 100, 27);		
+		frmCajero.getContentPane().add(btnSalir);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirmarSalida();
+			}
+		});
+		
+		// Configurar el JFrame
+		frmCajero.setBounds(100, 100, 700, 600);		
+		frmCajero.setResizable(false);
+		frmCajero.setVisible(true);
+		frmCajero.setLocationRelativeTo(null);
+		frmCajero.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		frmCajero.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmCajero.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		        confirmarSalida();
+		    }
+		});
+	}
+	
+	/**
+	 * Método principal para ejecutar la aplicación.
+	 * @param args Argumentos de la línea de comandos
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaMain window = new VentanaMain();
+					window.frmCajero.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+}

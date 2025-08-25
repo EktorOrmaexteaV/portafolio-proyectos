@@ -1,0 +1,33 @@
+# Archivos de compilación
+main
+*.exe
+*.out
+*.o
+
+# Logs (si los generas)
+*.log
+
+# Archivos temporales o de respaldo
+*~
+*.tmp
+*.bak
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos ocultos de los IDES
+*.depend
+*.layout
+*.cbp
+*.user
+.vscode/
+.project
+.classpath
+.settings/
+
+# Archivos y carpetas ocultos de NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/

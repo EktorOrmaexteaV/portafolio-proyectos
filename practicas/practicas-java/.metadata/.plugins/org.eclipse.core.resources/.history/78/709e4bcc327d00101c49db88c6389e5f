@@ -1,0 +1,55 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+
+public class PIN {
+
+	private JFrame frmPIN;
+	private JPasswordField txtPIN;
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+    private int MAX_INTENTOS = 3;
+    private String nombre;
+    private StringBuilder pinIngresado = new StringBuilder();
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PIN window = new PIN();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public PIN() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}

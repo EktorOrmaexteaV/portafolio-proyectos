@@ -1,0 +1,42 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+
+public class PIN {
+
+	private JFrame frmPIN;
+	private JPasswordField txtPIN;
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+    private int MAX_INTENTOS = 3;
+    private String nombre;
+    private StringBuilder pinIngresado = new StringBuilder();
+
+
+	public PIN(String cuenta, String nombre) {
+		this.cuenta = cuenta;	
+		iniciar();
+		
+		JOptionPane.showMessageDialog(
+				frmPIN,
+				"<html>" +
+                "Cuenta ingresada satisfactoriamente <br>"+                    
+                "Por favor, ingrese su número PIN.<br>" +
+                "A: Aceptar<br>" +
+                "C: Borrar el display<br>" +
+                "Salir: Cierra esta ventana y retorna a la ventana principal<br><br>"+
+                "<b>Tienes 3 intentos</b>" +
+                 "</html>",
+                "Instrucciones",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+	}
+
+}

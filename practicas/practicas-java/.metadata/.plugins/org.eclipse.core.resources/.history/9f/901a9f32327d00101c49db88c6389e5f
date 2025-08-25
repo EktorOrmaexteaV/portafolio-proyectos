@@ -1,0 +1,165 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+/**
+ * Inicio.java
+ * Ventana de inicio del cajero automático.
+ * El usuario puede ingresar su número de cuenta
+ * 
+ * @author Ektor Ormaetxea V
+ */
+public class Inicio {
+
+	private JFrame frmInicio;
+	Cajero cajero = new Cajero();
+
+	/**
+	 * Inicia la aplicación.
+	 */
+	public Inicio() {iniciar();}
+	
+	private void iniciar() {
+		// Crear el JFrame
+		frmInicio = new JFrame();
+		frmInicio.setTitle("Cajero");
+		frmInicio.getContentPane().setBackground(new Color(60, 63, 65));
+		frmInicio.getContentPane().setLayout(null);
+		
+		// Botón para consultar saldo
+		JButton btnSalir = new JButton("Salir");		
+		btnSalir.setForeground(new Color(192, 192, 192));
+		btnSalir.setBackground(new Color(60, 63, 65));
+		btnSalir.setBounds(576, 422, 100, 27);		
+		frmInicio.getContentPane().add(btnSalir);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(50, 100, 500, 400);
+		frmInicio.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(60, 63, 65));
+		panel_2.setBounds(50, 75, 400, 250);
+		panel_1.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNmeroDeCuenta = new JLabel("Número de cuenta:");
+		lblNmeroDeCuenta.setForeground(new Color(204, 204, 204));
+		lblNmeroDeCuenta.setBounds(32, 114, 114, 17);
+		panel_2.add(lblNmeroDeCuenta);
+		
+		JTextPane txtCuenta = new JTextPane();
+		txtCuenta.setBounds(155, 108, 220, 23);
+		panel_2.add(txtCuenta);
+		
+		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cuenta = txtCuenta.getText().trim();
+				if (cuenta.isEmpty()) {
+					JOptionPane.showMessageDialog(frmInicio, 
+							"Por favor, ingrese un número de cuenta.",
+							"Cuenta vacía", 
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					ingresarCuenta(cuenta);
+				}
+			}
+		});
+		btnIngresar.setForeground(Color.LIGHT_GRAY);
+		btnIngresar.setBackground(new Color(60, 63, 65));
+		btnIngresar.setBounds(576, 261, 100, 50);
+		frmInicio.getContentPane().add(btnIngresar);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirmarSalida();
+			}
+		});
+		
+		// Configurar el JFrame
+		frmInicio.setBounds(100, 100, 700, 600);		
+		frmInicio.setResizable(false);
+		frmInicio.setVisible(true);
+		frmInicio.setLocationRelativeTo(null);
+		frmInicio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		frmInicio.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmInicio.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		    	System.exit(0);
+		        confirmarSalida();
+		    }
+		});
+		
+		frmInicio.getContentPane().setLayout(null);
+		frmInicio.setResizable(false);
+		frmInicio.setVisible(true);
+	}
+	
+	private void confirmarSalida() {
+		int respuesta = JOptionPane.showConfirmDialog(frmInicio, "¿"
+				+ "Seguro que desea cancelar la operación y " 
+				+ "volver al menú principal?", 
+				"Confirmar salida",
+				JOptionPane.YES_NO_OPTION);
+		if (respuesta == JOptionPane.YES_OPTION) {
+			frmInicio.dispose();
+			new Main();		
+		}
+	}
+	
+	private void ingresarCuenta(String cuenta) {
+		if (cuenta.length() != cajero.getDigitosCuenta()) {
+			JOptionPane.showMessageDialog(frmInicio, 
+					"El número de cuenta debe tener " + cajero.getDigitosCuenta() + " dígitos numéricos.",
+					"Cuenta inválida", 
+					JOptionPane.ERROR_MESSAGE);
+			return;					
+		}
+		
+		if (!cajero.confirmarCuenta(cuenta)) {
+			JOptionPane.showMessageDialog(frmInicio, 
+					"La cuenta no existe.",
+					"Cuenta no encontrada", 
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		} else {
+			if(cajero.confirmarCuenta(cuenta)) {
+				frmInicio.dispose();
+				JOptionPane.showMessageDialog(frmInicio,
+						"Cuenta encontrada. Bienvenido, " + cajero.getUsuarioSesion() + ".\n" +
+						"Por favor, ingrese su PIN.",
+						"Bienvenido", 
+						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(frmInicio, 
+						"Funcionalidad de inicio de sesión no implementada aún.", 
+						"Información", 
+						JOptionPane.INFORMATION_MESSAGE);
+				//new VentanaPIN(cuenta);
+			} else {
+				JOptionPane.showMessageDialog(frmInicio, 
+						"La cuenta no existe.",
+						"Cuenta no encontrada", 
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				new Inicio();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
+}

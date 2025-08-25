@@ -1,0 +1,31 @@
+package com.cajero.gui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Datos {
+
+	private JFrame frmDatos;
+	private JTextField txtCuenta;
+	private JTextField txtPIN;
+	private JLabel lblSuPinEs;
+	private JLabel lblPorFavorCmbielo;
+	private JButton btnContinuar;
+	
+	private final String cuenta;
+    private final String PIN;
+
+	
+	public Datos(String cuenta, String PIN) {		
+		this.cuenta=cuenta;
+        this.PIN=PIN;
+		
+        iniciar();
+	}
+
+	
+	
+
+}

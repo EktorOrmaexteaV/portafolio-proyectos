@@ -1,0 +1,41 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+public class Cuenta {
+	private JFrame frmCuenta;
+
+	Cajero cajero = new Cajero();
+	
+	private final String cuenta;
+	private String usuario;
+	private String saldo;
+	private JTextField txtSaldo;
+
+	public Cuenta(String cuenta) {
+		this.cuenta = cuenta;
+		
+		if(!cajero.confirmarCuenta(cuenta)) {			
+			JOptionPane.showMessageDialog(
+					frmCuenta,
+					"<html>" +
+				 "Cuenta no encontrada <br>"+                    
+				 "Por favor, ingrese una cuenta válida.<br>" +
+				  "</html>",
+				 "Error",
+				 JOptionPane.ERROR_MESSAGE
+			 );
+			
+			frmCuenta.dispose();
+			new VentanaMain();
+		}
+		usuario = cajero.getUsuarioSesion();
+		saldo = String.valueOf(cajero.getSaldoSesion());
+		iniciar();
+	}
+}

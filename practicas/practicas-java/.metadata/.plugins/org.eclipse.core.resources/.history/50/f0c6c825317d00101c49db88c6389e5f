@@ -1,0 +1,21 @@
+package com.cajero.gui;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import com.cajero.Cajero;
+
+public class Inicio {
+
+	private JFrame frmInicio;
+	Cajero cajero = new Cajero();
+
+	public Inicio() {
+		iniciar();
+	}
+	
+	
+
+}
