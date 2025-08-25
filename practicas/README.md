@@ -110,7 +110,7 @@ A continuación, se listan los lenguajes de programación y algunos de los proye
 ---
 
 ### Java
-* **Cajero: [Simulador de Cajero Automático en Entorno GUI](https://www.google.com)**:
+* **Cajero: [Simulador de Cajero Automático en Entorno GUI](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-java/Cajero)**:
     * **Descripción**: Un simulador de cajero automático desarrollado en Java utilizando el entorno GUI de Eclipse para la programación orientada a objetos (POO).
     * **Tecnologías**: Java, POO, Entorno GUI y MySQL. 
     * **Aprendizajes Clave**: Recordando programción en Java, POO, manejo de entornos GUI y bases de datos.

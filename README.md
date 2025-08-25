@@ -15,7 +15,7 @@ Este repositorio sirve como un **portafolio personal** y un espacio de trabajo p
   - **Tecnologías**: C++, POO y MySQL
   - **Estado**: Completo (versión mejorada).
 
-  * **[Proyecto: Cajero (en etorno GUI en Java)](https://google.com)**:
+* **[Proyecto: Cajero (en etorno GUI en Java)](https://github.com/EktorOrmaexteaV/portafolio-proyectos/tree/main/practicas/practicas-java/Cajero)**:
   - **Descripción**: Simulador de cajero automático desarrollado en Java utilizando el entorno GUI de Eclipse para la programación orientada a objetos (POO), gestionando cuentas, realizando transacciones e impresion de un reporte de transacciones a un archivo PDF.
   - **Tecnologías**: Java, POO, Entorno GUI y MySQL
   - **Estado**: Completo (versión mejorada).
@@ -32,7 +32,6 @@ Este repositorio refleja mi viaje en el mundo de la programación. Cada proyecto
 * Manejo de bases de datos
 * Manejo de entornos GUI en Java
 * Manejo de entornos GUI en Java Swing
-
 ---
 
 ## Autor
