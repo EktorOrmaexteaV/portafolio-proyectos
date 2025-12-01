@@ -5674,3 +5674,377 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-25 11:06:57.434
 !MESSAGE [Info] Completion handler is refreshed for the document: file:///home/ektor/portafolio-proyectos/practicas/practicas-java/Cajero/src/com/cajero/gui/Main.java
+!SESSION 2025-08-27 12:21:56.628 -----------------------------------------------
+eclipse.buildId=4.36.0.20250605-1300
+java.version=21.0.7
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:22:15.821
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:22:28.826
+!MESSAGE Logback config file: /home/ektor/portafolio-proyectos/practicas/practicas-java/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:22:49.147
+!MESSAGE [Info] Starting language server with binary lsp agent.
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:22:49.317
+!MESSAGE [Info] Lsp agent started successfully.
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:22:57.023
+!MESSAGE [Info]	[lsp] GitHub Copilot Language Server 1.353.0 initialized
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:22:58.199
+!MESSAGE [Info]	[certificates] Removed 3 expired certificates
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:23:03.815
+!MESSAGE [Info] Document is null for editor: Main.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:23:03.816
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///home/ektor/portafolio-proyectos/practicas/practicas-java/Cajero/src/com/cajero/gui/Main.java
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-08-27 12:24:19.219
+!MESSAGE Unexpected interrupt while waiting on ECF browse request
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1133)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:276)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:85)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:281)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.delegateGetLastModified(CachingTransport.java:427)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.getLastModified(CachingTransport.java:364)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:287)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:198)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:73)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:165)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:131)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.lambda$10(MarketplaceCatalog.java:334)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+!SESSION 2025-08-27 12:28:02.332 -----------------------------------------------
+eclipse.buildId=4.36.0.20250605-1300
+java.version=21.0.7
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data file:/home/ektor/portafolio-proyectos/practicas/practicas-java/
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:28:17.239
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:28:26.700
+!MESSAGE Logback config file: /home/ektor/portafolio-proyectos/practicas/practicas-java/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:28:45.419
+!MESSAGE [Info] Starting language server with binary lsp agent.
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:28:45.505
+!MESSAGE [Info] Lsp agent started successfully.
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:28:58.384
+!MESSAGE [Info]	[lsp] GitHub Copilot Language Server 1.353.0 initialized
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:28:59.528
+!MESSAGE [Info]	[certificates] Removed 3 expired certificates
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-08-27 12:31:31.272
+!MESSAGE Unexpected interrupt while waiting on ECF browse request
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1133)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:276)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:85)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:281)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.delegateGetLastModified(CachingTransport.java:427)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.getLastModified(CachingTransport.java:364)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:287)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:198)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:73)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:165)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:131)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.lambda$10(MarketplaceCatalog.java:334)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.ui 4 0 2025-08-27 12:31:31.772
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4926)
+	at org.eclipse.swt.SWT.error(SWT.java:4860)
+	at org.eclipse.swt.SWT.error(SWT.java:4831)
+	at org.eclipse.swt.graphics.Image.init(Image.java:1266)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:219)
+	at org.eclipse.equinox.internal.p2.ui.discovery.util.GradientCanvas.onPaint(GradientCanvas.java:168)
+	at org.eclipse.equinox.internal.p2.ui.discovery.util.GradientCanvas.lambda$0(GradientCanvas.java:81)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:5862)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1656)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1682)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1665)
+	at org.eclipse.swt.widgets.Control.gtk_draw(Control.java:3891)
+	at org.eclipse.swt.widgets.Scrollable.gtk_draw(Scrollable.java:394)
+	at org.eclipse.swt.widgets.Composite.gtk_draw(Composite.java:506)
+	at org.eclipse.swt.widgets.Canvas.gtk_draw(Canvas.java:173)
+	at org.eclipse.swt.widgets.Widget.windowProc(Widget.java:2614)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:6857)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:6169)
+	at org.eclipse.swt.internal.gtk3.GTK3.gtk_main_do_event(Native Method)
+	at org.eclipse.swt.widgets.Display.eventProc(Display.java:1605)
+	at org.eclipse.swt.internal.gtk3.GTK3.gtk_main_iteration_do(Native Method)
+	at org.eclipse.swt.browser.WebKit$Webkit2AsyncToSync.execAsyncAndWaitForReturn(WebKit.java:1305)
+	at org.eclipse.swt.browser.WebKit$Webkit2AsyncToSync.runjavascript(WebKit.java:1037)
+	at org.eclipse.swt.browser.WebKit$Webkit2AsyncToSync.evaluate(WebKit.java:1007)
+	at org.eclipse.swt.browser.WebKit.evaluate(WebKit.java:1322)
+	at org.eclipse.swt.browser.WebKit.close(WebKit.java:872)
+	at org.eclipse.swt.browser.WebKit.onDispose(WebKit.java:1815)
+	at org.eclipse.swt.browser.WebKit.lambda$4(WebKit.java:775)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:5862)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1656)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1682)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1661)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1400)
+	at org.eclipse.swt.widgets.Control.release(Control.java:4762)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:576)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.computeBrowserAvailable(AbstractMarketplaceDiscoveryItem.java:521)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.createInfoLink(AbstractMarketplaceDiscoveryItem.java:394)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.createDescription(AbstractMarketplaceDiscoveryItem.java:341)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.createContent(AbstractMarketplaceDiscoveryItem.java:241)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.createContent(AbstractMarketplaceDiscoveryItem.java:203)
+	at org.eclipse.epp.internal.mpc.ui.wizards.AbstractMarketplaceDiscoveryItem.<init>(AbstractMarketplaceDiscoveryItem.java:168)
+	at org.eclipse.epp.internal.mpc.ui.wizards.DiscoveryItem.<init>(DiscoveryItem.java:86)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.createDiscoveryItem(MarketplaceViewer.java:462)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.doCreateViewerItem(MarketplaceViewer.java:412)
+	at org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer$3.doCreateItem(CatalogViewer.java:342)
+	at org.eclipse.equinox.internal.p2.ui.discovery.util.ControlListViewer.createNewItem(ControlListViewer.java:241)
+	at org.eclipse.equinox.internal.p2.ui.discovery.util.ControlListViewer.refreshAll(ControlListViewer.java:483)
+	at org.eclipse.equinox.internal.p2.ui.discovery.util.ControlListViewer.inputChanged(ControlListViewer.java:355)
+	at org.eclipse.jface.viewers.ContentViewer.setInput(ContentViewer.java:279)
+	at org.eclipse.jface.viewers.StructuredViewer.setInput(StructuredViewer.java:1635)
+	at org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer.catalogUpdated(CatalogViewer.java:248)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.access$3(MarketplaceViewer.java:1)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.lambda$1(MarketplaceViewer.java:354)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.runUpdate(MarketplaceViewer.java:712)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.catalogUpdated(MarketplaceViewer.java:353)
+	at org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer.updateCatalog(CatalogViewer.java:588)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer.updateCatalog(MarketplaceViewer.java:989)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplacePage.safeUpdateCatalog(MarketplacePage.java:798)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplacePage.lambda$4(MarketplacePage.java:786)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5052)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4525)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.epp.internal.mpc.ui.commands.AbstractMarketplaceWizardCommand.openWizardDialog(AbstractMarketplaceWizardCommand.java:146)
+	at org.eclipse.epp.internal.mpc.ui.commands.AbstractMarketplaceWizardCommand.execute(AbstractMarketplaceWizardCommand.java:73)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:98)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:299)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:233)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:174)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:165)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:485)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:204)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:444)
+	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:475)
+	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:497)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:5862)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1656)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:5077)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4522)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:678)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:583)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:185)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:219)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:149)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:467)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:298)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:627)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:575)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1431)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1403)
+
+!ENTRY org.eclipse.epp.mpc.ui 1 0 2025-08-27 12:32:58.714
+!MESSAGE Performing Marketplace install request from https://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3269902
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-08-27 12:33:41.504
+!MESSAGE Unexpected interrupt while waiting on ECF browse request
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1133)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:276)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:85)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:281)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.delegateGetLastModified(CachingTransport.java:427)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.getLastModified(CachingTransport.java:364)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:287)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:198)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:73)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:165)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:131)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.lambda$10(MarketplaceCatalog.java:334)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-08-27 12:35:00.886
+!MESSAGE Unexpected interrupt while waiting on ECF browse request
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1133)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:276)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:85)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:281)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.delegateGetLastModified(CachingTransport.java:427)
+	at org.eclipse.oomph.p2.internal.core.CachingTransport.getLastModified(CachingTransport.java:364)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:287)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:198)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:73)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:165)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:93)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:131)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:65)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:849)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:447)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:230)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:519)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:112)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.lambda$10(MarketplaceCatalog.java:334)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+!SESSION 2025-08-27 12:36:48.906 -----------------------------------------------
+eclipse.buildId=4.36.0.20250605-1300
+java.version=21.0.7
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data file:/home/ektor/portafolio-proyectos/practicas/practicas-java/
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:37:03.436
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-27 12:37:13.824
+!MESSAGE Logback config file: /home/ektor/portafolio-proyectos/practicas/practicas-java/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:37:33.128
+!MESSAGE [Info] Starting language server with binary lsp agent.
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-08-27 12:37:33.221
+!MESSAGE [Info] Lsp agent started successfully.
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:37:37.906
+!MESSAGE [Info]	[lsp] GitHub Copilot Language Server 1.353.0 initialized
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-08-27 12:37:38.587
+!MESSAGE [Info]	[certificates] Removed 3 expired certificates
